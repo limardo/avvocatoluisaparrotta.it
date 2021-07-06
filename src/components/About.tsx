@@ -1,0 +1,293 @@
+import { CountUp } from 'countup.js';
+import React from 'react';
+import styled from 'styled-components';
+import { AboutData } from '../data';
+import Bg9 from '../images/backgrounds/9.jpg';
+import D1 from '../images/misc/d1.jpg';
+import D2 from '../images/misc/d2.jpg';
+
+const AboutSectionLightStyled = styled.div`
+  position: relative;
+  background: #fff;
+  padding: 90px 0;
+
+  .images {
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+
+    .di-text,
+    img {
+      border-radius: 2px;
+      box-shadow: 2px 20px 30px 0 rgba(20, 20, 20, 0.3);
+    }
+
+    .di-text {
+      position: absolute;
+      width: 40%;
+      top: 40%;
+      left: -10%;
+      z-index: 1;
+      background: #888888;
+      text-align: center;
+      padding: 10% 0;
+      background: var(--primary-color);
+
+      h1,
+      span {
+        color: #fff;
+      }
+
+      h1 {
+        font-size: 4vw;
+        margin: 0;
+      }
+    }
+
+    .di-small-2 {
+      position: absolute;
+      width: 40%;
+      height: 40%;
+      right: -10%;
+      bottom: -10%;
+      z-index: 1;
+    }
+  }
+`;
+
+const AboutSectionDarkStyled = styled.div`
+  position: relative;
+  background: #111111;
+  padding: 90px 0;
+
+  h2 {
+    color: #fff;
+  }
+
+  p {
+    color: #f8f9fa;
+  }
+
+  .count-box {
+    border: solid 2px #333333;
+    padding: 30px;
+    transition: 0.7s;
+    outline: none;
+    text-align: center;
+    margin-bottom: 30px;
+
+    h3 {
+      color: #fff;
+      font-size: 180px;
+      line-height: 1em;
+      letter-spacing: 0;
+      margin: 0 0 15px;
+      padding: 0;
+    }
+
+    span {
+      color: var(--primary-color);
+      font-size: 14px;
+      letter-spacing: 5px;
+      font-weight: bold;
+      padding: 5px 10px;
+      text-transform: uppercase;
+    }
+  }
+
+  .image-container {
+    background: url(${Bg9}) center no-repeat;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+  }
+`;
+
+const About: React.FC<{ data: AboutData }> = ({ data }) => {
+  const countCaseRef = React.useRef<HTMLHeadingElement>(null);
+  const countYearsRef = React.useRef<HTMLHeadingElement>(null);
+  const {
+    slug,
+    preheading,
+    heading,
+    paragraph,
+    preheading2,
+    heading2,
+    paragraph2,
+    preheading3,
+    heading3,
+    paragraph3,
+    preheading4,
+    heading4,
+    paragraph4,
+    counter1,
+    counterText1,
+    counter2,
+    counterText2
+  } = data;
+
+  React.useEffect(() => {
+    // @ts-ignore
+    const countCase = new CountUp(countCaseRef.current, counter1, { startVal: counter1 * 0.8, separator: '.' });
+    // @ts-ignore
+    const countYears = new CountUp(countYearsRef.current, counter2, { separator: '.' });
+
+    const handleCase = () => {
+      countCase.reset();
+      countCase.start();
+    };
+
+    const handleYears = () => {
+      countYears.reset();
+      countYears.start();
+    };
+
+    document.addEventListener('aos:in:count-case', handleCase);
+    document.addEventListener('aos:in:count-years', handleYears);
+
+    return () => {
+      document.removeEventListener('aos:in:count-case', handleCase);
+      document.removeEventListener('aos:in:count-years', handleYears);
+    };
+  }, []);
+
+  return (
+    <section id={slug} aria-label="section">
+      <AboutSectionLightStyled id="about-section-1" className="pt-0">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-md-5" data-aos="fade-right" data-aos-delay="200" data-aos-anchor="#about-section-1">
+              <span className="p-title">{preheading}</span>
+              <br />
+              <h2>{heading}</h2>
+              <div dangerouslySetInnerHTML={{ __html: paragraph }} />
+            </div>
+            <div className="col-md-6 offset-md-1">
+              <div className="images">
+                <div
+                  className="di-text"
+                  data-aos="fade-right"
+                  data-aos-delay="800"
+                  data-aos-anchor="#about-section-1"
+                  data-aos-id="count-case"
+                >
+                  <h1 ref={countCaseRef}>{counter1}</h1>
+                  <span>{counterText1}</span>
+                </div>
+                <img
+                  className="di-small-2"
+                  src={D2}
+                  alt=""
+                  width={600}
+                  height={450}
+                  tabIndex={0}
+                  data-aos="fade-down"
+                  data-aos-delay="600"
+                  data-aos-anchor="#about-section-1"
+                />
+                <img
+                  className="di-big img-fluid"
+                  src={D1}
+                  alt=""
+                  width={600}
+                  height={450}
+                  tabIndex={0}
+                  data-aos="fade"
+                  data-aos-delay="400"
+                  data-aos-anchor="#about-section-1"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </AboutSectionLightStyled>
+
+      <AboutSectionDarkStyled id="about-section-2">
+        <div className="container">
+          <div className="row align-items-center">
+            <div
+              className="col-lg-4 col-md-12"
+              data-aos="fade-right"
+              data-aos-delay="200"
+              data-aos-anchor="#about-section-2"
+              data-aos-id="count-years"
+            >
+              <div className="count-box">
+                <h3 className="timer" ref={countYearsRef}>
+                  {counter2}
+                </h3>
+                <span className="id-color">{counterText2}</span>
+              </div>
+            </div>
+            <div
+              className="col-lg-4 p-lg-5  mb-sm-30"
+              data-aos="fade-right"
+              data-aos-delay="400"
+              data-aos-anchor="#about-section-2"
+            >
+              <span className="p-title">{preheading2}</span>
+              <br />
+              <h2>{heading2}</h2>
+            </div>
+            <div
+              className="col-lg-4"
+              data-aos="fade-right"
+              data-aos-delay="600"
+              data-aos-anchor="#about-section-2"
+              dangerouslySetInnerHTML={{ __html: paragraph2 }}
+            />
+          </div>
+        </div>
+      </AboutSectionDarkStyled>
+
+      <AboutSectionLightStyled id="about-section-3">
+        <div className="container">
+          <div className="row align-items-center">
+            <div
+              className="col-lg-4 col-md-12"
+              data-aos="fade-left"
+              data-aos-delay="200"
+              data-aos-anchor="#about-section-3"
+            >
+              <span className="p-title">{preheading3}</span>
+              <br />
+              <h2>{heading3}</h2>
+            </div>
+            <div
+              className="col-lg-8 p-lg-5  mb-sm-30"
+              data-aos="fade-left"
+              data-aos-delay="400"
+              data-aos-anchor="#about-section-3"
+              dangerouslySetInnerHTML={{ __html: paragraph3 }}
+            />
+          </div>
+        </div>
+      </AboutSectionLightStyled>
+
+      <AboutSectionDarkStyled id="about-section-4">
+        <div className="container">
+          <div className="row">
+            <div
+              className="col-lg-5 offset-lg-7 align-self-center"
+              data-aos="fade-left"
+              data-aos-delay="200"
+              data-aos-anchor="#about-section-4"
+            >
+              <span className="p-title">{preheading4}</span>
+              <br />
+              <h2>{heading4}</h2>
+              <div dangerouslySetInnerHTML={{ __html: paragraph4 }} />
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-6 image-container" />
+      </AboutSectionDarkStyled>
+    </section>
+  );
+};
+
+export default About;

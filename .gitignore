@@ -1,0 +1,26 @@
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+/.vscode
+/.history
+
+# compiled output
+public
+
+# dependencies
+node_modules/
+
+# misc
+.cache/
+npm-debug.log
+yarn-error.log
+
+# System Files
+.DS_Store
+Thumbs.db
+.vim
