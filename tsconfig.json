@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./bkp",
+    "rootDir": "src",
+    "target": "es5",
+    "module": "esnext",
+    "lib": ["dom", "es2015", "es2017"],
+    "sourceMap": true,
+    "strict": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "importHelpers": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true
+  },
+  "exclude": [
+    "bkp/node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "./src/**/*.mdx",
+    "./JUSTICA_HTML",
+    "./.cache",
+    "./public"
+  ]
+}
