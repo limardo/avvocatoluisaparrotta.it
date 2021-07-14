@@ -26,16 +26,16 @@ const FontAwesomeIconPracticeAreasListItemStyled = styled(FontAwesomeIcon).attrs
 
 const FontAwesomeIconSocialStyled = styled.a`
   display: inline-flex;
-  background-color: var(--primary-color);
-  font-size: 16px;
-  margin: 0 5px;
-  padding: 8px;
-  border-radius: 2px;
   width: 34px;
   height: 34px;
-  text-align: center;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: 8px;
+  margin: 0 5px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  font-size: 16px;
+  text-align: center;
   transition: 0.7s ease-out;
 
   ${FontAwesomeIconStyled} {
@@ -56,49 +56,49 @@ const FooterWidgetStyled = styled.div`
   margin-bottom: 60px;
 
   h4 {
-    font-size: 18px;
     margin-top: 0;
+    font-size: 18px;
     letter-spacing: normal;
   }
 
-  a:hover {
-    color: var(--primary-color);
-  }
-
   .logo {
-    height: auto;
     width: 200px;
     max-width: 200px;
+    height: auto;
   }
 
   address {
     margin-top: 20px;
 
     span {
-      background: none;
-      margin: 0;
+      display: block;
       padding: 0;
+      margin: 0;
+      background: none;
+      border-radius: 300px;
       font-size: 15px;
       line-height: 1.7em;
-      display: block;
-      border-radius: 300px;
 
       a {
-        color: #ffffff;
+        color: #fff;
       }
 
       ${FontAwesomeIconStyled} {
+        margin: 5px 15px 0 5px;
         color: var(--primary-color);
         font-size: 15px;
-        margin: 5px 15px 0 5px;
       }
     }
   }
 
   ul {
-    list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  a:hover {
+    color: var(--primary-color);
   }
 `;
 
@@ -110,57 +110,56 @@ const FooterPracticeAreasListStyled = styled.ul`
     margin: 5px 0 5px 0;
 
     ${FontAwesomeIconPracticeAreasListItemStyled} {
+      margin-right: 15px;
+      background: #111;
       color: var(--primary-color);
       font-size: 12px;
-      margin-right: 15px;
-      background: #111111;
     }
   }
 `;
 
 const FooterNewsletterStyled = styled.form`
   input[type='text'] {
-    padding: 9px 12px 9px 12px;
-    width: 80%;
-    float: left;
     display: table-cell;
-    border-radius: 2px 0 0 2px;
-    border: solid 1px #333333;
+    width: 80%;
+    padding: 9px 12px 9px 12px;
+    border: solid 1px #333;
     border-right: none;
-    color: #ffffff;
     background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px 0 0 2px;
     box-shadow: 2px 2px 20px 0 rgba(20, 20, 20, 0.05);
-    transition: 0.7s;
+    color: #fff;
+    float: left;
     outline: none;
+    transition: 0.7s;
 
     &:focus {
-      color: #111111;
-      background: #ffffff;
+      background: #fff;
+      color: #111;
     }
   }
 
   #newsletter-subscribe {
-    color: #fff;
+    border-color: #333;
     background: var(--primary-color);
-    border-color: #333333;
+    color: #fff;
   }
 `;
 
 const FooterSubfooterStyled = styled.div`
+  padding: 20px 0;
   border-top: solid 1px rgba(255, 255, 255, 0.1);
   margin-top: 40px;
-  padding: 20px 0;
 `;
 
 const FooterStyled = styled.footer`
-  color: #ffffff;
-  background: #111111;
   padding: 80px 0 0 0;
+  background: #111;
+  color: #fff;
   font-size: 14px;
 
   h1,
   h2,
-  h4,
   h4,
   h5,
   h6 {
@@ -173,7 +172,7 @@ const FooterStyled = styled.footer`
   }
 
   a {
-    color: #ffffff;
+    color: #fff;
     text-decoration: none !important;
   }
 

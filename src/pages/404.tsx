@@ -3,20 +3,20 @@ import styled from 'styled-components';
 import Layout from '../components/Layout';
 
 const NotFoundPageStyled = styled.section`
-  display: flex;
   position: relative;
-  color: #f8f9fa;
-  background: #181715;
+  display: flex;
   align-items: center;
   justify-content: center;
+  background: #181715;
+  color: #f8f9fa;
 
   h1 {
     color: #f8f9fa;
   }
 
   a {
+    color: #fff;
     text-decoration: none;
-    color: #ffffff;
 
     &:hover {
       color: var(--primary-color);

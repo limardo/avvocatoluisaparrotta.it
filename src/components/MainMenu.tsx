@@ -32,19 +32,19 @@ const query = graphql`
 const MainMenuLinkStyled = styled(Link)``;
 
 const MainMenuStyled = styled.ul`
-  font-size: 13px;
   margin: 0 auto;
   float: none;
+  font-size: 13px;
   text-transform: uppercase;
 
   ${MainMenuLinkStyled} {
     position: relative;
     display: inline-block;
     padding: 30px 18px;
-    text-decoration: none;
     color: #fff;
-    text-align: center;
     outline: none;
+    text-align: center;
+    text-decoration: none;
 
     &:focus {
       color: #fff;
@@ -57,54 +57,54 @@ const MainMenuStyled = styled.ul`
   }
 
   ul {
-    margin: 0 0;
-    padding: 0;
-    height: 30px;
-    border-radius: 2px;
     overflow: hidden;
-    background: #ffffff;
+    height: 30px;
+    padding: 0;
+    margin: 0 0;
+    background: #fff;
+    border-radius: 2px;
     box-shadow: 2px 2px 30px 0 rgba(20, 20, 20, 0.1);
   }
 
   li {
-    margin: 0;
-    padding: 0;
-    float: left;
-    display: inline;
-    list-style: none;
     position: relative;
+    display: inline;
+    padding: 0;
+    margin: 0;
+    float: left;
+    list-style: none;
   }
 
   & > li {
-    letter-spacing: 1px;
     font-weight: 500;
+    letter-spacing: 1px;
   }
 
   &.mobile {
-    float: none;
     z-index: 200;
     width: 100%;
-    margin: 0;
     padding: 0;
+    margin: 0;
+    float: none;
     text-align: left;
 
     li {
+      display: block;
+      width: 100%;
       border-bottom: solid 1px #eee;
       margin: 0;
-      width: 100%;
-      display: block;
 
       &:last-child {
         margin-bottom: 30px;
       }
 
       & ${MainMenuLinkStyled} {
+        width: 100%;
+        padding: 10px 0;
         color: #888;
         text-align: left;
-        padding: 10px 0;
-        width: 100%;
 
-        &:after {
+        &::after {
           display: none;
         }
 

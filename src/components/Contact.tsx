@@ -6,22 +6,22 @@ import FeatureBox from './FeatureBox';
 
 const ContactStyled = styled.section`
   position: relative;
-  background: #111;
   padding-bottom: 90px;
+  background: #111;
 
-  input[type='text'],
   textarea,
-  select {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
+  select,
+  input[type='text'] {
     border: none;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 2px;
     box-shadow: none;
+    color: #fff;
 
     &:focus {
-      color: #fff;
       background: rgba(255, 255, 255, 0.3);
       box-shadow: none;
+      color: #fff;
     }
 
     & ~ label {
@@ -35,8 +35,8 @@ const ContactStyled = styled.section`
 
   .was-validated .form-control:valid,
   .was-validated .form-control:invalid {
-    border-bottom-style: solid;
     border-bottom-width: 1px;
+    border-bottom-style: solid;
   }
 `;
 

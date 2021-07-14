@@ -8,8 +8,8 @@ import D2 from '../images/misc/d2.jpg';
 
 const AboutSectionLightStyled = styled.div`
   position: relative;
-  background: #fff;
   padding: 90px 0;
+  background: #fff;
 
   .images {
     position: relative;
@@ -24,14 +24,13 @@ const AboutSectionLightStyled = styled.div`
 
     .di-text {
       position: absolute;
-      width: 40%;
+      z-index: 1;
       top: 40%;
       left: -10%;
-      z-index: 1;
-      background: #888888;
-      text-align: center;
+      width: 40%;
       padding: 10% 0;
       background: var(--primary-color);
+      text-align: center;
 
       h1,
       span {
@@ -39,26 +38,26 @@ const AboutSectionLightStyled = styled.div`
       }
 
       h1 {
-        font-size: 4vw;
         margin: 0;
+        font-size: 4vw;
       }
     }
 
     .di-small-2 {
       position: absolute;
-      width: 40%;
-      height: 40%;
+      z-index: 1;
       right: -10%;
       bottom: -10%;
-      z-index: 1;
+      width: 40%;
+      height: 40%;
     }
   }
 `;
 
 const AboutSectionDarkStyled = styled.div`
   position: relative;
-  background: #111111;
   padding: 90px 0;
+  background: #111;
 
   h2 {
     color: #fff;
@@ -69,41 +68,41 @@ const AboutSectionDarkStyled = styled.div`
   }
 
   .count-box {
-    border: solid 2px #333333;
     padding: 30px;
-    transition: 0.7s;
+    border: solid 2px #333;
+    margin-bottom: 30px;
     outline: none;
     text-align: center;
-    margin-bottom: 30px;
+    transition: 0.7s;
 
     h3 {
+      padding: 0;
+      margin: 0 0 15px;
       color: #fff;
       font-size: 180px;
-      line-height: 1em;
       letter-spacing: 0;
-      margin: 0 0 15px;
-      padding: 0;
+      line-height: 1em;
     }
 
     span {
+      padding: 5px 10px;
       color: var(--primary-color);
       font-size: 14px;
-      letter-spacing: 5px;
       font-weight: bold;
-      padding: 5px 10px;
+      letter-spacing: 5px;
       text-transform: uppercase;
     }
   }
 
   .image-container {
-    background: url(${Bg9}) center no-repeat;
-    background-size: cover;
-    height: 100%;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
     position: absolute;
     top: 0;
+    overflow: hidden;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: url(${Bg9}) center no-repeat;
+    background-size: cover;
   }
 `;
 

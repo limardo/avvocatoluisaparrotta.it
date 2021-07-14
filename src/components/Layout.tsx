@@ -13,7 +13,7 @@ const Layout: React.FC<any> = ({ children }) => {
       {children}
       <BackToTop />
       <Footer />
-      <Preload/>
+      <Preload />
     </main>
   );
 };

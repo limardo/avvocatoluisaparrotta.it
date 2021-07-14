@@ -5,21 +5,21 @@ export const GlobalStyle = createGlobalStyle`
     --primary-color: #eaa636;
     --primary-color-rgb: 234, 166, 54;
     --bs-primary: var(--primary-color);
-    --bs-font-sans-serif: 'Jost', Helvetica, Arial, sans-serif;
+    --bs-font-sans-serif: 'Jost', helvetica, arial, sans-serif;
   }
 
   html {
-    overflow-x: hidden;
     background: #fff;
+    overflow-x: hidden;
   }
 
   body {
+    padding: 0;
+    color: #606060;
     font-family: var(--bs-font-sans-serif);
     font-size: 15px;
     font-weight: 400;
-    color: #606060;
     line-height: 1.8em;
-    padding: 0;
   }
 
   a, img {
@@ -27,8 +27,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h4, h3, h5, h6 {
-    color: #111111;
     margin-top: 0;
+    color: #111;
     font-weight: 600;
   }
 
@@ -41,32 +41,32 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-size: 48px;
     margin-bottom: 20px;
-    line-height: 56px;
+    font-size: 48px;
     letter-spacing: -1px;
+    line-height: 56px;
   }
 
   h2 {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 36px;
-    line-height: 42px;
     letter-spacing: -1px;
-    display: inline-block;
-    overflow: hidden;
-    position: relative;
+    line-height: 42px;
   }
 
   h3 {
-    font-size: 22px;
     margin-bottom: 25px;
+    font-size: 22px;
   }
 
   h4 {
-    font-size: 20px;
     margin-top: 0;
     margin-bottom: 10px;
+    font-size: 20px;
   }
 
   h5 {
@@ -74,73 +74,76 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   p.lead {
-    font-size: 16px;
-    line-height: 1.7em;
     margin-top: 0;
+    font-size: 16px;
     font-weight: 400;
+    line-height: 1.7em;
   }
 
-  a.btn-custom,
-  .btn-custom,
-  .btn-black {
-    font-size: 12px;
-    min-width: 120px;
+  .btn-custom{
     background: var(--primary-color);
-    transition: 0.7s;
-
-    &,
-    &:active,
-    &:focus,
-    &:visited {
-      color: #fff;
-      border-radius: 2px;
-      outline: 0;
-      font-weight: bold;
-      text-decoration: none;
-      padding: 11px 30px;
-      min-width: 120px;
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 2px;
-    }
-
-    &:hover {
-      color: #fff;
-      box-shadow: 2px 2px 20px 0 rgba(20, 20, 20, 0.3);
-    }
   }
 
   .btn-black {
     background: #111;
   }
 
+  a.btn-custom,
+  .btn-custom,
+  .btn-black {
+    min-width: 120px;
+    font-size: 12px;
+    transition: 0.7s;
+
+    &,
+    &:active,
+    &:focus,
+    &:visited {
+      min-width: 120px;
+      padding: 11px 30px;
+      border-radius: 2px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      outline: 0;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    &:hover {
+      box-shadow: 2px 2px 20px 0 rgba(20, 20, 20, 0.3);
+      color: #fff;
+    }
+  }
+
   section {
-    padding: 90px 0 0;
     position: relative;
+    padding: 90px 0 0;
   }
 
   .p-title {
     display: inline-block;
+    margin-bottom: 20px;
     color: var(--primary-color);
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 2px;
     line-height: 10px;
     text-transform: uppercase;
-    margin-bottom: 20px;
   }
 
   .small-border {
+    display: block;
     width: 100px;
     height: 3px;
-    border-top: solid 2px #333333;
+    border-top: solid 2px #333;
     border-top-color: rgb(51, 51, 51);
-    border-left: none;
-    border-left-color: currentcolor;
     border-right: none;
-    border-right-color: currentcolor;
-    display: block;
+    border-right-color: currentColor;
+    border-bottom-color: var(--primary-color);
+    border-left: none;
+    border-left-color: currentColor;
     margin: 0 auto 30px;
-    border-color: var(--primary-color);
   }
 `;

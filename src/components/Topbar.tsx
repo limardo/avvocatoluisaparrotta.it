@@ -38,23 +38,23 @@ const TopbarLinkStyled = styled(Link)``;
 
 const TopbarStyled = styled.div`
   z-index: 1000;
-  width: 100%;
-  overflow: hidden;
   top: 0;
-  background: #111111;
+  overflow: hidden;
+  width: 100%;
+  background: #111;
 
   & a,
   & a:focus,
   & ${TopbarLinkStyled}, & ${TopbarLinkStyled}:focus {
+    color: #fff;
     text-decoration: none;
-    color: #ffffff;
   }
 
   .topbar-left,
   .topbar-right {
     display: inline-flex;
-    flex: 1 1 auto;
     width: auto;
+    flex: 1 1 auto;
   }
 
   .topbar-left {
@@ -66,29 +66,29 @@ const TopbarStyled = styled.div`
   }
 
   .topbar-widget {
-    font-size: 13px;
     display: inline-flex;
-    padding: 8px 15px;
-    font-weight: 400;
     height: 40px;
+    padding: 8px 15px;
+    font-size: 13px;
+    font-weight: 400;
   }
 
   .topbar-widget.tb-social {
-    padding: 0;
     align-items: center;
+    padding: 0;
   }
 
   .topbar-widget.tb-social a {
     display: inline-block;
-    font-size: 14px;
     padding: 5px 15px;
+    font-size: 14px;
     text-align: center;
   }
 `;
 
 const TopbarIconStyled = styled(FontAwesomeIcon)`
-  color: var(--primary-color);
   position: relative;
+  color: var(--primary-color);
 `;
 
 const Topbar: React.FC<any> = () => {
