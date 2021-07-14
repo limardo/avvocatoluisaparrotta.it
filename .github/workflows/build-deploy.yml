@@ -3,11 +3,11 @@ name: Build and Deploy
 on:
   release:
     types:
-      - created
+      - published
 
 jobs:
-  build:
-    name: Build
+  build-and-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
     environment: Production
     steps:
@@ -36,12 +36,6 @@ jobs:
           BING_VERIFICATION: ${{ secrets.BING_VERIFICATION }}
           YANDEX_VERIFICATION: ${{ secrets.YANDEX_VERIFICATION }}
           GOOGLE_ANALYTICS: ${{ secrets.GOOGLE_ANALYTICS }}
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    environment: Production
-    needs: build
-    steps:
       - name: Deploy
         run: |
           echo "Deployed on server"
