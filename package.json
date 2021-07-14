@@ -7,12 +7,18 @@
   "keywords": [
     "gatsby"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/limardo/avvocatoluisaparrotta.it.git"
+  },
   "scripts": {
+    "prepare": "husky install",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "release": "standard-version"
   },
   "dependencies": {
     "@fontsource/jost": "^4.4.5",
@@ -26,10 +32,10 @@
     "@mdx-js/react": "^1.6.22",
     "@types/react-icofont": "^1.0.1",
     "aos": "^3.0.0-beta.6",
-    "babel-plugin-styled-components": "^1.13.1",
+    "babel-plugin-styled-components": "^1.13.2",
     "bootstrap": "^5.0.2",
     "countup.js": "^2.0.7",
-    "gatsby": "^3.8.1",
+    "gatsby": "^3.9.1",
     "gatsby-plugin-google-analytics": "^3.8.0",
     "gatsby-plugin-google-gtag": "^3.9.0",
     "gatsby-plugin-image": "^1.8.0",
@@ -52,15 +58,17 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@types/loadable__component": "^5.13.4",
-    "@types/mdx-js__react": "^1.5.3",
-    "@types/node": "^16.0.0",
+    "@types/mdx-js__react": "^1.5.4",
+    "@types/node": "^16.3.2",
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.8",
     "@types/react-helmet": "^6.1.1",
     "@types/styled-components": "^5.1.11",
-    "@typescript-eslint/eslint-plugin": "^4.28.2",
-    "@typescript-eslint/parser": "^4.28.2",
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
@@ -69,8 +77,17 @@
     "expose-loader": "^3.0.0",
     "gatsby-plugin-eslint": "^3.0.0",
     "gatsby-plugin-typescript": "^3.8.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.1",
     "postcss": "^8.3.5",
     "prettier": "^2.3.2",
+    "standard-version": "^9.3.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-prettier": "^1.2.0",
     "typescript": "^4.3.5"
   }
 }

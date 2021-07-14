@@ -5,14 +5,14 @@ import LogoLightSvg from '../images/logo-light.svg';
 import LogoSvg from '../images/logo.svg';
 
 const LogoStyled = styled.div`
+  height: auto;
   color: white;
   transition: all 0.3s;
-  height: auto;
 
   img {
-    height: auto;
     width: 200px;
     max-width: 200px;
+    height: auto;
   }
 
   & .logo {

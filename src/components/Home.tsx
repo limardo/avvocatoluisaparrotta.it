@@ -11,8 +11,8 @@ const HomeSection = styled.section`
 
   .v-center {
     display: flex;
-    align-items: center;
     min-height: 100vh;
+    align-items: center;
   }
 
   h1 {
@@ -31,10 +31,10 @@ const HomeSection = styled.section`
 `;
 
 const HomeHeroImage = styled.div`
-  background: url(${Bg5}) top;
-  background-size: cover;
   width: 100%;
   height: 100%;
+  background: url(${Bg5}) top;
+  background-size: cover;
 `;
 
 const Home: React.FC<{ data: HomeData }> = ({ data }) => {

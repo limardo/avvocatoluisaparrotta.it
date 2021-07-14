@@ -14,21 +14,21 @@ export interface PracticeAreaBoxProps {
 
 const PracticeAreaBoxIconStyled = styled.i<{ icon: string | IconProp }>`
   display: block;
-  color: #f8f9fa;
-  background: var(--primary-color);
-  font-size: 36px;
-  text-align: center;
-  padding: 22px;
-  margin-right: 30px;
   width: 80px;
   height: 80px;
+  padding: 22px;
+  margin-right: 30px;
+  background: var(--primary-color);
   border-radius: 2px;
+  color: #f8f9fa;
+  font-size: 36px;
+  text-align: center;
 `;
 
 const PracticeAreaBoxStyled = styled.div`
   display: flex;
-  transition: 0.7s;
   outline: none;
+  transition: 0.7s;
 `;
 
 const PracticeAreaBox: React.FC<PracticeAreaBoxProps> = ({ title, icon, set = 'fontawesome', children }) => {

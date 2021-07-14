@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 export const ListItemIconStyled = styled(FontAwesomeIcon).attrs({ icon: faCheck })`
-  color: var(--primary-color);
-  background: #111111;
   padding: 5px;
   margin-right: 15px;
   margin-bottom: -2px;
   margin-left: -37px;
+  background: #111;
   border-radius: 2px;
+  color: var(--primary-color);
   font-size: 22px;
 `;
 

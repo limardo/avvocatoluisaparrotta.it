@@ -14,42 +14,42 @@ export interface FeatureBoxProps {
 }
 
 const MainIconStyled = styled.i<{ icon: IconProp | string }>`
-  color: var(--primary-color);
-  text-align: center;
-  font-size: 42px;
   width: 42px;
   height: 42px;
   margin-bottom: 20px;
+  color: var(--primary-color);
+  font-size: 42px;
+  text-align: center;
 `;
 
 const BackgroundIconStyled = styled.i<{ icon: IconProp | string }>`
   position: absolute;
-  font-size: 240px;
-  background: none;
-  width: auto;
-  height: auto;
-  color: rgba(0, 0, 0, 0.2);
+  z-index: 0;
   right: 0;
   bottom: -10%;
   left: 50%;
-  transition: 0.7s;
+  width: auto;
+  height: auto;
+  background: none;
+  color: rgba(0, 0, 0, 0.2);
+  font-size: 240px;
+  letter-spacing: -0.05em;
+  opacity: 0.2;
   outline: none;
   text-align: center;
-  opacity: 0.2;
-  z-index: 0;
-  letter-spacing: -0.05em;
+  transition: 0.7s;
 `;
 
 const FeatureBoxStyled = styled.div`
+  position: relative;
+  overflow: hidden;
+  height: 100%;
   padding: 50px;
   background: #f8f8f8;
   background-size: auto;
-  position: relative;
-  overflow: hidden;
+  outline: none;
   text-align: center;
   transition: 0.7s;
-  outline: none;
-  height: 100%;
 
   ${MainIconStyled},
   h4 {
@@ -61,13 +61,13 @@ const FeatureBoxStyled = styled.div`
   }
 
   &:hover {
-    color: #ffffff;
     background: var(--primary-color);
     box-shadow: 2px 2px 30px 0 rgba(0, 0, 0, 0.2);
+    color: #fff;
 
     ${MainIconStyled},
     h4 {
-      color: #ffffff;
+      color: #fff;
     }
 
     ${BackgroundIconStyled} {

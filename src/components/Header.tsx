@@ -9,15 +9,15 @@ import Logo from './Logo';
 import MainMenu from './MainMenu';
 
 const HeaderStyled = styled.header`
-  width: 100%;
   position: absolute;
-  left: 0;
   z-index: 1001;
-  background: rgba(20, 20, 20, 0.8);
-  margin: 0;
+  left: 0;
+  width: 100%;
   height: 90px;
-  transition: 0.7s;
+  margin: 0;
+  background: rgba(20, 20, 20, 0.8);
   outline: none;
+  transition: 0.7s;
 
   &.transparent {
     background: none;
@@ -25,23 +25,23 @@ const HeaderStyled = styled.header`
 
   .header-col {
     display: inline-flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 
   .h-phone {
     position: relative;
-    font-weight: bold;
-    color: #ffffff;
-    padding-left: 50px;
-    font-size: 18px;
     padding-top: 20px;
+    padding-left: 50px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
 
     span {
-      display: inline-block;
       position: absolute;
-      left: 50px;
       top: 0;
+      left: 50px;
+      display: inline-block;
       font-size: 12px;
       font-weight: 500;
     }
@@ -49,25 +49,25 @@ const HeaderStyled = styled.header`
 
   &.header-mobile {
     position: relative;
-    background: #fff;
     top: 0;
     overflow: hidden;
     padding: 15px 0;
+    background: #fff;
     transition: height 0.5s ease-out;
 
     li:last-child {
-      margin-bottom: 0;
       border-bottom: none;
+      margin-bottom: 0;
     }
   }
 
   &.sticky {
-    background: rgba(0, 0, 0, 0.8);
     position: fixed;
     top: 0;
     padding: 0;
-    box-shadow: 0 4px 6px 0 rgba(10, 10, 10, 0.05);
     border: 0;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 6px 0 rgba(10, 10, 10, 0.05);
   }
 
   @media (max-width: 991px) {
@@ -77,8 +77,8 @@ const HeaderStyled = styled.header`
 
     .header-logo {
       display: inline-flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       padding-top: 6px;
       padding-bottom: 6px;
     }
@@ -90,22 +90,22 @@ const HeaderStyled = styled.header`
 `;
 
 const HeaderPhoneIconStyled = styled(FontAwesomeIcon).attrs({ icon: faPhone, flip: 'horizontal' })`
-  color: var(--primary-color);
-  display: inline-block;
   position: absolute;
-  font-size: 32px;
-  left: 0;
   top: 8px;
+  left: 0;
+  display: inline-block;
+  color: var(--primary-color);
+  font-size: 32px;
 `;
 
 const HeaderBurgerMenuStyled = styled.span`
   width: 32px;
   height: 32px;
   padding: 5px;
-  text-align: center;
-  cursor: pointer;
-  color: #fff;
   background-color: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
   transition: background-color 0.2s ease-out, color 0.4s ease-out;
 
   &:hover {

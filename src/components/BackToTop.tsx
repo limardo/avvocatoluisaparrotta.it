@@ -5,27 +5,27 @@ import styled from 'styled-components';
 
 const BackToTopStyled = styled.button`
   position: fixed;
-  bottom: -40px;
-  right: 20px;
   z-index: 1020;
+  right: 20px;
+  bottom: -40px;
   width: 40px;
   height: 40px;
-  text-align: center;
-  line-height: 30px;
-  cursor: pointer;
+  padding-top: 4px;
   border: 0;
+  background: var(--primary-color);
   border-radius: 2px;
+  cursor: pointer;
+  line-height: 30px;
+  opacity: 0;
+  outline: none;
+  text-align: center;
   text-decoration: none;
   transition: opacity 0.2s ease-out;
-  outline: none;
-  opacity: 0;
-  padding-top: 4px;
-  background: var(--primary-color);
 
   &.show,
   &.hide {
-    transition: 0.7s;
     outline: none;
+    transition: 0.7s;
   }
 
   &.show {
@@ -40,8 +40,8 @@ const BackToTopStyled = styled.button`
 
 const BackToTopIconStyled = styled(FontAwesomeIcon)`
   position: relative;
+  color: #fff;
   font-size: 16px;
-  color: #ffffff;
 `;
 
 const BackToTop: React.FC<any> = () => {
