@@ -3,8 +3,8 @@ name: Release
 on: workflow_dispatch
 
 jobs:
-  build-and-deploy:
-    name: Release
+  release:
+    name: Create Release
     runs-on: ubuntu-latest
     environment: Production
     steps:
@@ -32,3 +32,27 @@ jobs:
           git config user.email "<>"
       - name: Release
         run: npm run release
+      - name: Commit release
+        run: git push --follow-tags origin master
+      - name: Create release
+        run: https://github.com/limardo/avvocatoluisaparrotta.it/releases/new?tag=v$(cat .version)
+  api:
+    name: Create Github Release
+    runs-on: ubuntu-latest
+    environment: Production
+    steps:
+      - name: Data
+        id: data
+        run: |
+          echo ::set-output name=tag_name::$(cat .version)
+          echo ::set-output name=body::$(cat .version)
+      - name: Call Github api release
+        run: |
+          curl --request POST
+          --url https://api.github.com/repos/${{ github.repository }}/releases \
+              --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+              --header 'content-type: application/json' \
+              --data '{
+                "tag_name": "v${{ steps.data.outputs.tag_name }}"
+              }' \
+              --fail
