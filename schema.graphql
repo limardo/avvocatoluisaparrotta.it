@@ -528,6 +528,7 @@ type MdxFrontmatter {
   counter2: Int
   counterText1: String
   counterText2: String
+  enabled: Boolean
   features: [MdxFrontmatterFeatures]
   heading: String
   heading2: String
@@ -634,7 +635,7 @@ type Query {
   file(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, childImageSharp: ImageSharpFilterInput, childMdx: MdxFilterInput, children: NodeFilterListInput, childrenImageSharp: ImageSharpFilterListInput, childrenMdx: MdxFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): File
   imageSharp(children: NodeFilterListInput, fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, gatsbyImageData: JSONQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, original: ImageSharpOriginalFilterInput, parent: NodeFilterInput, resize: ImageSharpResizeFilterInput): ImageSharp
   mdx(body: StringQueryOperatorInput, children: NodeFilterListInput, excerpt: StringQueryOperatorInput, fileAbsolutePath: StringQueryOperatorInput, frontmatter: MdxFrontmatterFilterInput, headings: MdxHeadingMdxFilterListInput, html: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, mdxAST: JSONQueryOperatorInput, parent: NodeFilterInput, rawBody: StringQueryOperatorInput, slug: StringQueryOperatorInput, tableOfContents: JSONQueryOperatorInput, timeToRead: IntQueryOperatorInput, wordCount: MdxWordCountFilterInput): Mdx
-  site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, port: IntQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput): Site
+  site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, port: IntQueryOperatorInput, proxy: SiteProxyFilterInput, siteMetadata: SiteSiteMetadataFilterInput): Site
   siteBuildMetadata(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput): SiteBuildMetadata
   siteFunction(absoluteCompiledFilePath: StringQueryOperatorInput, children: NodeFilterListInput, functionRoute: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, matchPath: StringQueryOperatorInput, originalAbsoluteFilePath: StringQueryOperatorInput, originalRelativeFilePath: StringQueryOperatorInput, parent: NodeFilterInput, pluginName: StringQueryOperatorInput, relativeCompiledFilePath: StringQueryOperatorInput): SiteFunction
   sitePage(children: NodeFilterListInput, component: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, internalComponentName: StringQueryOperatorInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, matchPath: StringQueryOperatorInput, parent: NodeFilterInput, path: StringQueryOperatorInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput): SitePage
@@ -657,9 +658,8 @@ type Site implements Node {
   id: ID!
   internal: Internal!
   parent: Node
-  pathPrefix: String
-  polyfill: Boolean
   port: Int
+  proxy: SiteProxy
   siteMetadata: SiteSiteMetadata
 }
 
@@ -895,6 +895,7 @@ type SitePluginPluginOptions {
   createLinkInHead: Boolean
   crossOrigin: String
   defaultQuality: Int
+  destination: String
   displayName: Boolean
   entryLimit: Int
   extensions: [String]
@@ -913,20 +914,33 @@ type SitePluginPluginOptions {
   output: String
   path: String
   pathCheck: Boolean
+  pluginConfig: SitePluginPluginOptionsPluginConfig
   pure: Boolean
+  purge: Boolean
   query: String
   root: String
+  source: String
   stripMetadata: Boolean
   theme_color_in_head: Boolean
   transpileTemplateLiterals: Boolean
 }
 
+type SitePluginPluginOptionsPluginConfig {
+  head: Boolean
+}
+
+type SiteProxy {
+  prefix: String
+  url: String
+}
+
 type SiteSiteMetadata {
-  bingVerification: String
+  bingVerification: Boolean
   description: String
   email: String
   facebook: String
-  googleVerification: String
+  googleRecaptchaSitekey: String
+  googleVerification: Boolean
   linkedin: String
   phone: String
   siteUrl: String
@@ -941,7 +955,7 @@ type SiteSiteMetadata {
     "Configures the locale Moment.js will use to format the date."
     locale: String
   ): Date
-  yandexVerification: String
+  yandexVerification: Boolean
 }
 
 enum DirectoryFieldsEnum {
@@ -1175,6 +1189,7 @@ enum FileFieldsEnum {
   childMdx___frontmatter___counter2
   childMdx___frontmatter___counterText1
   childMdx___frontmatter___counterText2
+  childMdx___frontmatter___enabled
   childMdx___frontmatter___features
   childMdx___frontmatter___features___icon
   childMdx___frontmatter___features___items
@@ -1331,6 +1346,7 @@ enum FileFieldsEnum {
   childrenMdx___frontmatter___counter2
   childrenMdx___frontmatter___counterText1
   childrenMdx___frontmatter___counterText2
+  childrenMdx___frontmatter___enabled
   childrenMdx___frontmatter___features
   childrenMdx___frontmatter___features___icon
   childrenMdx___frontmatter___features___items
@@ -1727,6 +1743,7 @@ enum MdxFieldsEnum {
   frontmatter___counter2
   frontmatter___counterText1
   frontmatter___counterText2
+  frontmatter___enabled
   frontmatter___features
   frontmatter___features___icon
   frontmatter___features___items
@@ -2001,13 +2018,14 @@ enum SiteFieldsEnum {
   parent___parent___internal___type
   parent___parent___parent___children
   parent___parent___parent___id
-  pathPrefix
-  polyfill
   port
+  proxy___prefix
+  proxy___url
   siteMetadata___bingVerification
   siteMetadata___description
   siteMetadata___email
   siteMetadata___facebook
+  siteMetadata___googleRecaptchaSitekey
   siteMetadata___googleVerification
   siteMetadata___linkedin
   siteMetadata___phone
@@ -2271,6 +2289,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___createLinkInHead
   pluginCreator___pluginOptions___crossOrigin
   pluginCreator___pluginOptions___defaultQuality
+  pluginCreator___pluginOptions___destination
   pluginCreator___pluginOptions___displayName
   pluginCreator___pluginOptions___entryLimit
   pluginCreator___pluginOptions___extensions
@@ -2289,9 +2308,12 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___output
   pluginCreator___pluginOptions___path
   pluginCreator___pluginOptions___pathCheck
+  pluginCreator___pluginOptions___pluginConfig___head
   pluginCreator___pluginOptions___pure
+  pluginCreator___pluginOptions___purge
   pluginCreator___pluginOptions___query
   pluginCreator___pluginOptions___root
+  pluginCreator___pluginOptions___source
   pluginCreator___pluginOptions___stripMetadata
   pluginCreator___pluginOptions___theme_color_in_head
   pluginCreator___pluginOptions___transpileTemplateLiterals
@@ -2413,6 +2435,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___createLinkInHead
   pluginOptions___crossOrigin
   pluginOptions___defaultQuality
+  pluginOptions___destination
   pluginOptions___displayName
   pluginOptions___entryLimit
   pluginOptions___extensions
@@ -2431,9 +2454,12 @@ enum SitePluginFieldsEnum {
   pluginOptions___output
   pluginOptions___path
   pluginOptions___pathCheck
+  pluginOptions___pluginConfig___head
   pluginOptions___pure
+  pluginOptions___purge
   pluginOptions___query
   pluginOptions___root
+  pluginOptions___source
   pluginOptions___stripMetadata
   pluginOptions___theme_color_in_head
   pluginOptions___transpileTemplateLiterals
@@ -2760,6 +2786,7 @@ input MdxFrontmatterFilterInput {
   counter2: IntQueryOperatorInput
   counterText1: StringQueryOperatorInput
   counterText2: StringQueryOperatorInput
+  enabled: BooleanQueryOperatorInput
   features: MdxFrontmatterFeaturesFilterListInput
   heading: StringQueryOperatorInput
   heading2: StringQueryOperatorInput
@@ -2863,9 +2890,8 @@ input SiteFilterInput {
   id: StringQueryOperatorInput
   internal: InternalFilterInput
   parent: NodeFilterInput
-  pathPrefix: StringQueryOperatorInput
-  polyfill: BooleanQueryOperatorInput
   port: IntQueryOperatorInput
+  proxy: SiteProxyFilterInput
   siteMetadata: SiteSiteMetadataFilterInput
 }
 
@@ -2971,6 +2997,7 @@ input SitePluginPluginOptionsFilterInput {
   createLinkInHead: BooleanQueryOperatorInput
   crossOrigin: StringQueryOperatorInput
   defaultQuality: IntQueryOperatorInput
+  destination: StringQueryOperatorInput
   displayName: BooleanQueryOperatorInput
   entryLimit: IntQueryOperatorInput
   extensions: StringQueryOperatorInput
@@ -2989,12 +3016,19 @@ input SitePluginPluginOptionsFilterInput {
   output: StringQueryOperatorInput
   path: StringQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
+  pluginConfig: SitePluginPluginOptionsPluginConfigFilterInput
   pure: BooleanQueryOperatorInput
+  purge: BooleanQueryOperatorInput
   query: StringQueryOperatorInput
   root: StringQueryOperatorInput
+  source: StringQueryOperatorInput
   stripMetadata: BooleanQueryOperatorInput
   theme_color_in_head: BooleanQueryOperatorInput
   transpileTemplateLiterals: BooleanQueryOperatorInput
+}
+
+input SitePluginPluginOptionsPluginConfigFilterInput {
+  head: BooleanQueryOperatorInput
 }
 
 input SitePluginSortInput {
@@ -3002,18 +3036,24 @@ input SitePluginSortInput {
   order: [SortOrderEnum] = [ASC]
 }
 
+input SiteProxyFilterInput {
+  prefix: StringQueryOperatorInput
+  url: StringQueryOperatorInput
+}
+
 input SiteSiteMetadataFilterInput {
-  bingVerification: StringQueryOperatorInput
+  bingVerification: BooleanQueryOperatorInput
   description: StringQueryOperatorInput
   email: StringQueryOperatorInput
   facebook: StringQueryOperatorInput
-  googleVerification: StringQueryOperatorInput
+  googleRecaptchaSitekey: StringQueryOperatorInput
+  googleVerification: BooleanQueryOperatorInput
   linkedin: StringQueryOperatorInput
   phone: StringQueryOperatorInput
   siteUrl: StringQueryOperatorInput
   title: StringQueryOperatorInput
   updateTime: DateQueryOperatorInput
-  yandexVerification: StringQueryOperatorInput
+  yandexVerification: BooleanQueryOperatorInput
 }
 
 input SiteSortInput {

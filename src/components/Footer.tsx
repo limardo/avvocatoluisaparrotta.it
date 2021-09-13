@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import { useRecaptcha } from '../hooks/useRecaptcha';
 import LogoLightSvg from '../images/logo-light.svg';
 
 const query = graphql`
@@ -15,6 +16,7 @@ const query = graphql`
         email
         linkedin
         facebook
+        googleRecaptchaSitekey
       }
     }
   }
@@ -100,6 +102,23 @@ const FooterWidgetStyled = styled.div`
   a:hover {
     color: var(--primary-color);
   }
+
+  .info {
+    display: inline-block;
+    clear: both;
+  }
+
+  .error {
+    display: none;
+    clear: both;
+    color: #e7505a;
+  }
+
+  .success {
+    display: none;
+    clear: both;
+    color: #96c346;
+  }
 `;
 
 const FooterPracticeAreasListStyled = styled.ul`
@@ -184,9 +203,82 @@ const FooterStyled = styled.footer`
 const Footer: React.FC<any> = () => {
   const {
     site: {
-      siteMetadata: { phone, email, linkedin, facebook }
+      siteMetadata: { phone, email, linkedin, facebook, googleRecaptchaSitekey }
     }
   } = useStaticQuery(query);
+  const emailRef = React.useRef<HTMLInputElement>(null);
+  const execute = useRecaptcha(!!googleRecaptchaSitekey);
+
+  const handleSubscribe = async () => {
+    if (emailRef.current) {
+      if (emailRef.current.checkValidity()) {
+        const send = document.querySelector('#newsletter-subscribe');
+        const info = document.querySelector('#newsletter_info');
+        const success = document.querySelector('#newsletter_success');
+        const fail = document.querySelector('#newsletter_fail');
+
+        try {
+          if (send) {
+            send.setAttribute('disabled', 'disabled');
+          }
+
+          if (info) {
+            info.classList.remove('d-none');
+          }
+
+          if (fail) {
+            fail.classList.remove('d-block');
+          }
+
+          const result = await execute('newsletter');
+
+          if (!result) {
+            throw new Error();
+          }
+
+          const response = await fetch('/scripts/newsletter', {
+            method: 'POST',
+            mode: 'same-origin',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer',
+            body: JSON.stringify({
+              email: emailRef.current.value,
+              token: result
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error();
+          }
+
+          if (info) {
+            info.classList.add('d-none');
+          }
+
+          if (success) {
+            success.classList.add('d-block');
+          }
+        } catch (e) {
+          if (send) {
+            send.removeAttribute('disabled');
+          }
+
+          if (info) {
+            info.classList.add('d-none');
+          }
+
+          if (fail) {
+            fail.classList.add('d-block');
+          }
+        }
+      }
+    }
+  };
 
   return (
     <FooterStyled>
@@ -246,9 +338,12 @@ const Footer: React.FC<any> = () => {
                 <div className="col text-center">
                   <div className="input-group mb-3">
                     <input
+                      ref={emailRef}
                       type="text"
                       className="form-control"
                       placeholder="inserisci la tua email"
+                      required
+                      pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\x22(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\x22)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
                       aria-label="inserisci la tua email"
                       aria-describedby="newsletter-subscribe"
                     />
@@ -257,13 +352,22 @@ const Footer: React.FC<any> = () => {
                       type="button"
                       id="newsletter-subscribe"
                       aria-label="Iscriviti"
+                      onClick={handleSubscribe}
                     >
                       <FontAwesomeIcon icon={faLongArrowAltRight} />
                     </button>
                   </div>
                 </div>
               </FooterNewsletterStyled>
-              <small className="d-inline-block">La tua email è al sicuro con noi. Non facciamo spam.</small>
+              <small id="newsletter_info" className="info">
+                La tua email è al sicuro con noi. Non facciamo spam.
+              </small>
+              <small id="newsletter_success" className="success">
+                Grazie per la tua richiesta.
+              </small>
+              <small id="newsletter_fail" className="error">
+                Spiacente, si è verificato un errore con la tua richiesta.
+              </small>
             </FooterWidgetStyled>
           </div>
         </div>

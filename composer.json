@@ -1,0 +1,16 @@
+{
+  "name": "app/scripts",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "swiftmailer/swiftmailer": "^6.2",
+    "slim/slim": "4.*",
+    "slim/psr7": "^1.4",
+    "google/recaptcha": "^1.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\Scripts\\": "scripts/"
+    }
+  }
+}

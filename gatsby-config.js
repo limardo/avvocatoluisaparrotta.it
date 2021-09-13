@@ -11,7 +11,12 @@ module.exports = {
     updateTime: new Date().toISOString(),
     googleVerification: process.env.GOOGLE_VERIFICATION || false,
     bingVerification: process.env.BING_VERIFICATION || false,
-    yandexVerification: process.env.YANDEX_VERIFICATION || false
+    yandexVerification: process.env.YANDEX_VERIFICATION || false,
+    googleRecaptchaSitekey: process.env.GOOGLE_RECAPTCHA_SITEKEY || '6LeUHWMcAAAAAChnVKJQ0a1zO_l1O001LUCDWi7s'
+  },
+  proxy: {
+    prefix: '/scripts',
+    url: 'http://localhost:8080'
   },
   plugins: [
     'gatsby-plugin-styled-components',
@@ -52,6 +57,38 @@ module.exports = {
         path: './contents/'
       },
       __key: 'contents'
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'scripts',
+        path: `${__dirname}/scripts`
+      },
+      __key: 'scripts'
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'vendor',
+        path: `${__dirname}/vendor`
+      },
+      __key: 'vendor'
+    },
+    {
+      resolve: 'gatsby-plugin-copy-files-enhanced',
+      options: {
+        source: `${__dirname}/scripts`,
+        destination: '/scripts/',
+        purge: true
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-copy-files-enhanced',
+      options: {
+        source: `${__dirname}/vendor`,
+        destination: '/vendor/',
+        purge: true
+      }
     }
   ]
 };
