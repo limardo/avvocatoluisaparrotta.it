@@ -2,6 +2,7 @@ import { faChess, faEnvelopeOpenText, faFingerprint } from '@fortawesome/free-so
 import React, { FormEvent } from 'react';
 import styled from 'styled-components';
 import { ContactData } from '../data';
+import { useRecaptcha } from '../hooks/useRecaptcha';
 import FeatureBox from './FeatureBox';
 
 const ContactStyled = styled.section`
@@ -38,29 +39,103 @@ const ContactStyled = styled.section`
     border-bottom-width: 1px;
     border-bottom-style: solid;
   }
+
+  .error {
+    display: none;
+    padding-top: 20px;
+    clear: both;
+    color: #e7505a;
+  }
+
+  .success {
+    display: none;
+    padding-top: 20px;
+    clear: both;
+    color: #96c346;
+  }
 `;
 
 const ContactFeaturesStyled = styled.section`
   padding-bottom: 90px;
 `;
 
-const Contact: React.FC<{ data: ContactData }> = ({ data }) => {
-  const formRef = React.useRef<HTMLFormElement>(null);
+const Contact: React.FC<{ data: ContactData; recaptcha: boolean }> = ({ data, recaptcha }) => {
   const { slug, heading, features } = data;
+  const formRef = React.useRef<HTMLFormElement>(null);
+  const execute = useRecaptcha(recaptcha);
 
-  const handleSubmit = (event: FormEvent) => {
-    if (formRef.current) {
-      if (!formRef.current.checkValidity()) {
-        // event.preventDefault();
-        // event.stopPropagation();
-        console.info('FORM INVALIDO');
-      }
-
-      formRef.current.classList.add('was-validated');
-    }
-
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     event.stopPropagation();
+
+    if (formRef.current) {
+      if (formRef.current.checkValidity()) {
+        const submit = document.querySelector('#submit');
+        const sendMessage = document.querySelector('#send_message');
+        const success = document.querySelector('#mail_success');
+        const fail = document.querySelector('#mail_fail');
+
+        try {
+          if (sendMessage) {
+            sendMessage.setAttribute('disabled', 'disabled');
+            sendMessage.innerHTML = 'Invio...';
+          }
+
+          if (fail) {
+            fail.classList.remove('d-block');
+          }
+
+          const result = await execute('contacts');
+
+          if (!result) {
+            throw new Error();
+          }
+
+          const response = await fetch('/scripts/contacts', {
+            method: 'POST',
+            mode: 'same-origin',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer',
+            body: JSON.stringify({
+              firstname: formRef.current.firstname.value,
+              lastname: formRef.current.lastname.value,
+              email: formRef.current.email.value,
+              phone: formRef.current.phone.value,
+              message: formRef.current.message.value,
+              token: result
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error();
+          }
+
+          if (submit) {
+            submit.remove();
+          }
+
+          if (success) {
+            success.classList.add('d-block');
+          }
+
+          formRef.current.classList.add('was-validated');
+        } catch (e) {
+          if (sendMessage) {
+            sendMessage.removeAttribute('disabled');
+            sendMessage.innerHTML = 'Invia';
+          }
+
+          if (fail) {
+            fail.classList.add('d-block');
+          }
+        }
+      }
+    }
   };
 
   return (
@@ -163,21 +238,19 @@ const Contact: React.FC<{ data: ContactData }> = ({ data }) => {
                   </div>
                 </div>
 
-                <div className="col-12 text-center">
+                <div id="submit" className="col-12 text-center">
                   <button type="submit" id="send_message" className="btn btn-custom">
                     Invia
                   </button>
                 </div>
 
-                {/*
-              <div id="mail_success" className="success">
-                Your message has been sent successfully.
-              </div>
+                <div id="mail_success" className="success text-center">
+                  Il tuo messaggio è stato inviato con successo.
+                </div>
 
-              <div id="mail_fail" className="error">
-                Sorry, error occured this time sending your message.
-              </div>
-              */}
+                <div id="mail_fail" className="error text-center">
+                  Spiacente, si è verificato un errore nell&apos;invio del tuo messaggio.
+                </div>
               </form>
             </div>
             <div className="col-lg-4" />

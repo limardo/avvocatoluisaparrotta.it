@@ -2,14 +2,14 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import About from '../components/About';
 import Contact from '../components/Contact';
-import Faq from '../components/Faq';
 import Home from '../components/Home';
 import Layout from '../components/Layout';
 import PracticeAreas from '../components/PracticeAreas';
-import { AboutData, ContactData, FrontmatterData, FaqData, HomeData, PracticeAreasData } from '../data';
+import { AboutData, ContactData, FaqData, FrontmatterData, HomeData, PracticeAreasData } from '../data';
 
 export interface IndexPageProp {
   data: {
+    site: { siteMetadata: { googleRecaptchaSitekey: string | boolean } };
     home: FrontmatterData<HomeData>;
     about: FrontmatterData<AboutData>;
     practiceAreas: FrontmatterData<PracticeAreasData>;
@@ -24,14 +24,21 @@ const IndexPage: React.FC<IndexPageProp> = ({ data }) => {
       <Home data={data.home.frontmatter} />
       <About data={data.about.frontmatter} />
       <PracticeAreas data={data.practiceAreas.frontmatter} />
+      {/*
       <Faq data={data.faq.frontmatter} />
-      <Contact data={data.contact.frontmatter} />
+      */}
+      <Contact data={data.contact.frontmatter} recaptcha={!!data.site.siteMetadata.googleRecaptchaSitekey} />
     </Layout>
   );
 };
 
 export const query = graphql`
   query IndexPageQuery {
+    site {
+      siteMetadata {
+        googleRecaptchaSitekey
+      }
+    }
     home: mdx(frontmatter: { slug: { eq: "home" } }) {
       frontmatter {
         title

@@ -1,13 +1,14 @@
 import React from 'react';
 import { GlobalStyle } from './components/GlobalStyle';
+import Recaptcha from './components/Recaptcha';
 import Seo from './components/Seo';
 
-export const wrapPageElement = ({ element, props }: any) => {
+export const wrapPageElement = ({ element, ...props }: any) => {
   return (
-    <React.Fragment>
+    <Recaptcha>
       <Seo />
       <GlobalStyle />
       {element}
-    </React.Fragment>
+    </Recaptcha>
   );
 };

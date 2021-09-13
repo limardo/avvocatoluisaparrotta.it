@@ -12,7 +12,7 @@ export interface MainMenuProps {
 const query = graphql`
   query MainMenuQuery {
     allMdx(
-      filter: { frontmatter: { menu: { main: { label: { regex: "/.+/" } } } } }
+      filter: { frontmatter: { menu: { main: { label: { regex: "/.+/" } } }, enabled: { eq: true } } }
       sort: { order: ASC, fields: frontmatter___menu___main___order }
     ) {
       nodes {

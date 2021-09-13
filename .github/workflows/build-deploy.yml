@@ -36,6 +36,7 @@ jobs:
           BING_VERIFICATION: ${{ secrets.BING_VERIFICATION }}
           YANDEX_VERIFICATION: ${{ secrets.YANDEX_VERIFICATION }}
           GOOGLE_ANALYTICS: ${{ secrets.GOOGLE_ANALYTICS }}
+          GOOGLE_RECAPTCHA_SITEKEY: ${{ secrets.GOOGLE_RECAPTCHA_SITEKEY }}
       - name: Deploy
         run: |
           echo "Deployed on server"
