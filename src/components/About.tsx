@@ -2,9 +2,9 @@ import { CountUp } from 'countup.js';
 import React from 'react';
 import styled from 'styled-components';
 import { AboutData } from '../data';
-import Bg9 from '../images/backgrounds/9.jpg';
-import D1 from '../images/misc/d1.jpg';
-import D2 from '../images/misc/d2.jpg';
+import Bg9 from '../images/backgrounds/9.webp';
+import D1 from '../images/misc/d1.webp';
+import D2 from '../images/misc/d2.webp';
 
 const AboutSectionLightStyled = styled.div`
   position: relative;
