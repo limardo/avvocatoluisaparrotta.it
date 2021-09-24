@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.1.2 (2021-09-24)
+
+### Bug Fixes
+
+- solved major bugs ([2fa404f](https://github.com/limardo/avvocatoluisaparrotta.it/commit/2fa404f3b8bc45ffd431c598bd49d3e5867dd159))
+
 ### 1.1.1 (2021-09-24)
 
 ### Bug Fixes
