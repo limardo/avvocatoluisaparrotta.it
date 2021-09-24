@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.1.4 (2021-09-24)
+
+### Bug Fixes
+
+- converted images to webp ([c078254](https://github.com/limardo/avvocatoluisaparrotta.it/commit/c07825476e50626708e9da6af3fc74ba3aeda208))
+
 ### 1.1.3 (2021-09-24)
 
 ### Bug Fixes
