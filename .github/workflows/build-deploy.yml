@@ -21,15 +21,15 @@ jobs:
         with:
           php-version: '7.4'
       - name: Generate Dotenv
-        uses: SpicyPizza/create-envfile@v1
+        uses: falnyr/replace-env-vars-action@master
+        env:
+          GOOGLE_RECAPTCHA_SERVER_KEY: ${{ secrets.GOOGLE_RECAPTCHA_SERVER_KEY }}
+          MAIL_SMTP: ${{ secrets.MAIL_SMTP }}
+          MAIL_PORT: ${{ secrets.MAIL_PORT }}
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
         with:
-          envkey_GOOGLE_RECAPTCHA_SERVER_KEY: ${{ secrets.GOOGLE_RECAPTCHA_SERVER_KEY }}
-          envkey_MAIL_SMTP: ${{ secrets.MAIL_SMTP }}
-          envkey_MAIL_PORT: ${{ secrets.MAIL_PORT }}
-          envkey_MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
-          envkey_MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
-          directory: ./scripts
-          file_name: .env
+          filename: ./scripts/.env
       - name: Cache node modules
         id: node-cache
         uses: actions/cache@v2
@@ -86,7 +86,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_PATH }}
           local-dir: ./public/
-          exclude: >
-            - cgi-bin
-            - .ftp-deploy-sync-state.json
-          dangerous-clean-slate: true
+          state-name: .ftp-deploy-sync-state.json
+          exclude: '[cgi-bin]'
