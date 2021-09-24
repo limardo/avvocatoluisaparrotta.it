@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.1.3 (2021-09-24)
+
+### Bug Fixes
+
+- solved ci bugs ([b75d949](https://github.com/limardo/avvocatoluisaparrotta.it/commit/b75d94994bdd2059346774d044ef1b0c11c1adca))
+
 ### 1.1.2 (2021-09-24)
 
 ### Bug Fixes
