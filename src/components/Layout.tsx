@@ -7,7 +7,7 @@ import Topbar from './Topbar';
 
 const Layout: React.FC<any> = ({ children }) => {
   return (
-    <main>
+    <main style={{ overflowX: 'hidden' }}>
       <Topbar />
       <Header />
       {children}

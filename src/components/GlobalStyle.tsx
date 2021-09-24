@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 15px;
     font-weight: 400;
     line-height: 1.8em;
+    overflow-x: hidden;
   }
 
   a, img {
@@ -146,4 +147,6 @@ export const GlobalStyle = createGlobalStyle`
     border-left-color: currentColor;
     margin: 0 auto 30px;
   }
+
+  .grecaptcha-badge { visibility: hidden; }
 `;
