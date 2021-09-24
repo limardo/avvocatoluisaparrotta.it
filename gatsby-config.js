@@ -1,3 +1,5 @@
+const package = require('./package.json');
+
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://www.avvocatoluisaparrotta.it',
@@ -12,7 +14,8 @@ module.exports = {
     googleVerification: process.env.GOOGLE_VERIFICATION || false,
     bingVerification: process.env.BING_VERIFICATION || false,
     yandexVerification: process.env.YANDEX_VERIFICATION || false,
-    googleRecaptchaSitekey: process.env.GOOGLE_RECAPTCHA_SITEKEY || 'dasdasdsa'
+    googleRecaptchaSitekey: process.env.GOOGLE_RECAPTCHA_SITEKEY || false,
+    version: package.version
   },
   proxy: {
     prefix: '/scripts',

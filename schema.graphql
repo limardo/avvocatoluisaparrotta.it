@@ -635,7 +635,7 @@ type Query {
   file(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, childImageSharp: ImageSharpFilterInput, childMdx: MdxFilterInput, children: NodeFilterListInput, childrenImageSharp: ImageSharpFilterListInput, childrenMdx: MdxFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): File
   imageSharp(children: NodeFilterListInput, fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, gatsbyImageData: JSONQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, original: ImageSharpOriginalFilterInput, parent: NodeFilterInput, resize: ImageSharpResizeFilterInput): ImageSharp
   mdx(body: StringQueryOperatorInput, children: NodeFilterListInput, excerpt: StringQueryOperatorInput, fileAbsolutePath: StringQueryOperatorInput, frontmatter: MdxFrontmatterFilterInput, headings: MdxHeadingMdxFilterListInput, html: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, mdxAST: JSONQueryOperatorInput, parent: NodeFilterInput, rawBody: StringQueryOperatorInput, slug: StringQueryOperatorInput, tableOfContents: JSONQueryOperatorInput, timeToRead: IntQueryOperatorInput, wordCount: MdxWordCountFilterInput): Mdx
-  site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, port: IntQueryOperatorInput, proxy: SiteProxyFilterInput, siteMetadata: SiteSiteMetadataFilterInput): Site
+  site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, port: IntQueryOperatorInput, proxy: SiteProxyFilterListInput, siteMetadata: SiteSiteMetadataFilterInput): Site
   siteBuildMetadata(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput): SiteBuildMetadata
   siteFunction(absoluteCompiledFilePath: StringQueryOperatorInput, children: NodeFilterListInput, functionRoute: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, matchPath: StringQueryOperatorInput, originalAbsoluteFilePath: StringQueryOperatorInput, originalRelativeFilePath: StringQueryOperatorInput, parent: NodeFilterInput, pluginName: StringQueryOperatorInput, relativeCompiledFilePath: StringQueryOperatorInput): SiteFunction
   sitePage(children: NodeFilterListInput, component: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, internalComponentName: StringQueryOperatorInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, matchPath: StringQueryOperatorInput, parent: NodeFilterInput, path: StringQueryOperatorInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput): SitePage
@@ -658,8 +658,10 @@ type Site implements Node {
   id: ID!
   internal: Internal!
   parent: Node
+  pathPrefix: String
+  polyfill: Boolean
   port: Int
-  proxy: SiteProxy
+  proxy: [SiteProxy]
   siteMetadata: SiteSiteMetadata
 }
 
@@ -939,7 +941,7 @@ type SiteSiteMetadata {
   description: String
   email: String
   facebook: String
-  googleRecaptchaSitekey: String
+  googleRecaptchaSitekey: Boolean
   googleVerification: Boolean
   linkedin: String
   phone: String
@@ -955,6 +957,7 @@ type SiteSiteMetadata {
     "Configures the locale Moment.js will use to format the date."
     locale: String
   ): Date
+  version: String
   yandexVerification: Boolean
 }
 
@@ -2018,7 +2021,10 @@ enum SiteFieldsEnum {
   parent___parent___internal___type
   parent___parent___parent___children
   parent___parent___parent___id
+  pathPrefix
+  polyfill
   port
+  proxy
   proxy___prefix
   proxy___url
   siteMetadata___bingVerification
@@ -2032,6 +2038,7 @@ enum SiteFieldsEnum {
   siteMetadata___siteUrl
   siteMetadata___title
   siteMetadata___updateTime
+  siteMetadata___version
   siteMetadata___yandexVerification
 }
 
@@ -2890,8 +2897,10 @@ input SiteFilterInput {
   id: StringQueryOperatorInput
   internal: InternalFilterInput
   parent: NodeFilterInput
+  pathPrefix: StringQueryOperatorInput
+  polyfill: BooleanQueryOperatorInput
   port: IntQueryOperatorInput
-  proxy: SiteProxyFilterInput
+  proxy: SiteProxyFilterListInput
   siteMetadata: SiteSiteMetadataFilterInput
 }
 
@@ -3041,18 +3050,23 @@ input SiteProxyFilterInput {
   url: StringQueryOperatorInput
 }
 
+input SiteProxyFilterListInput {
+  elemMatch: SiteProxyFilterInput
+}
+
 input SiteSiteMetadataFilterInput {
   bingVerification: BooleanQueryOperatorInput
   description: StringQueryOperatorInput
   email: StringQueryOperatorInput
   facebook: StringQueryOperatorInput
-  googleRecaptchaSitekey: StringQueryOperatorInput
+  googleRecaptchaSitekey: BooleanQueryOperatorInput
   googleVerification: BooleanQueryOperatorInput
   linkedin: StringQueryOperatorInput
   phone: StringQueryOperatorInput
   siteUrl: StringQueryOperatorInput
   title: StringQueryOperatorInput
   updateTime: DateQueryOperatorInput
+  version: StringQueryOperatorInput
   yandexVerification: BooleanQueryOperatorInput
 }
 

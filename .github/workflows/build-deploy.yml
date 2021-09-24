@@ -88,4 +88,5 @@ jobs:
           local-dir: ./public/
           exclude: >
             - cgi-bin
+            - .ftp-deploy-sync-state.json
           dangerous-clean-slate: true
