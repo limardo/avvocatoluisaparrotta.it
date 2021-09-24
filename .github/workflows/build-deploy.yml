@@ -6,8 +6,8 @@ on:
       - published
 
 jobs:
-  build-and-deploy:
-    name: Build and Deploy
+  build:
+    name: Build
     runs-on: ubuntu-latest
     environment: Production
     steps:
@@ -16,19 +16,40 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14.x'
+      - name: Use Php 7.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+      - name: Generate Dotenv
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_GOOGLE_RECAPTCHA_SERVER_KEY: ${{ secrets.GOOGLE_RECAPTCHA_SERVER_KEY }}
+          envkey_MAIL_SMTP: ${{ secrets.MAIL_SMTP }}
+          envkey_MAIL_PORT: ${{ secrets.MAIL_PORT }}
+          envkey_MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          envkey_MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          directory: ./scripts
+          file_name: .env
       - name: Cache node modules
+        id: node-cache
         uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - name: Install dependecies
+            ${{ runner.os }}-npm-
+      - name: Cache composer packages
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+      - name: Install NPM dependecies
         run: npm ci
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress
       - name: Build
         run: npm run build --if-present
         env:
@@ -37,7 +58,34 @@ jobs:
           YANDEX_VERIFICATION: ${{ secrets.YANDEX_VERIFICATION }}
           GOOGLE_ANALYTICS: ${{ secrets.GOOGLE_ANALYTICS }}
           GOOGLE_RECAPTCHA_SITEKEY: ${{ secrets.GOOGLE_RECAPTCHA_SITEKEY }}
+      - name: Cache build
+        id: build-cache
+        uses: actions/cache@v2
+        with:
+          path: ./public
+          key: build-${{ github.sha }}
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: Production
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Restore build
+        uses: actions/cache@v2
+        id: build-cache
+        with:
+          path: ./public
+          key: build-${{ github.sha }}
       - name: Deploy
-        run: |
-          echo "Deployed on server"
-          ls ./public
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_PATH }}
+          local-dir: ./public/
+          exclude: >
+            - cgi-bin
+          dangerous-clean-slate: true

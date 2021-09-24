@@ -2,7 +2,7 @@ import React from 'react';
 import { Background, Parallax } from 'react-parallax';
 import styled from 'styled-components';
 import { HomeData } from '../data';
-import Bg5 from '../images/backgrounds/5.jpg';
+import Bg5 from '../images/backgrounds/home.jpeg';
 import Link from './Link';
 
 const HomeSection = styled.section`
