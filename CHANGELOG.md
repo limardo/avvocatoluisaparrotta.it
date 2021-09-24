@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.2.0 (2021-09-24)
+
+### Features
+
+- added apache config ([e1ed4de](https://github.com/limardo/avvocatoluisaparrotta.it/commit/e1ed4dec0c7d6a8da4c011f4981f2b39bb1b1c95))
+
 ### 1.1.4 (2021-09-24)
 
 ### Bug Fixes
