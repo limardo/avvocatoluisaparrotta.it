@@ -117,19 +117,11 @@ const MainMenuStyled = styled.ul`
 `;
 
 const MainMenu: React.FC<MainMenuProps> = ({ target }) => {
-  const mobile = useMobile();
-  const mainMenuClassname = mobile ? 'mobile' : '';
   const {
     allMdx: { nodes }
   } = useStaticQuery(query);
-
-  const menuItems = (nodes as any[]).map((item, index) => (
-    <li key={index}>
-      <MainMenuLinkStyled hash={item.frontmatter.slug} className="nav-link">
-        {item.frontmatter.menu.main.label}
-      </MainMenuLinkStyled>
-    </li>
-  ));
+  const mobile = useMobile();
+  const [mainMenuClassname, setMainMenuClassname] = React.useState<string>('');
 
   React.useEffect(() => {
     const scrollSpy = new ScrollSpy(document.body, {
@@ -139,6 +131,18 @@ const MainMenu: React.FC<MainMenuProps> = ({ target }) => {
 
     return () => scrollSpy.dispose();
   }, []);
+
+  React.useEffect(() => {
+    setMainMenuClassname(mobile ? 'mobile' : '');
+  }, [mobile]);
+
+  const menuItems = (nodes as any[]).map((item, index) => (
+    <li key={index}>
+      <MainMenuLinkStyled hash={item.frontmatter.slug} className="nav-link">
+        {item.frontmatter.menu.main.label}
+      </MainMenuLinkStyled>
+    </li>
+  ));
 
   return <MainMenuStyled className={mainMenuClassname}>{menuItems}</MainMenuStyled>;
 };

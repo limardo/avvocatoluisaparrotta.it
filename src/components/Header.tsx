@@ -124,15 +124,15 @@ const Header: React.FC<any> = () => {
   const mobile = useMobile();
   const handleBurgetMenu = useBurgerMenu(headerRef.current, mobile);
   const isSticky = useStickyHeader();
+  const [headerClassname, setHeaderClassname] = React.useState<string>('transparent');
 
-  const headerClassname = [
-    'transparent',
-    ...(mobile ? ['header-mobile'] : []),
-    ...(!mobile && isSticky ? ['sticky'] : [])
-  ];
+  React.useEffect(() => {
+    const classes = ['transparent', ...(mobile ? ['header-mobile'] : []), ...(!mobile && isSticky ? ['sticky'] : [])];
+    setHeaderClassname(classes.join(' '));
+  }, [mobile, headerClassname, isSticky]);
 
   return (
-    <HeaderStyled ref={headerRef} className={headerClassname.join(' ')}>
+    <HeaderStyled ref={headerRef} className={headerClassname}>
       <div className="container">
         <div className="row">
           <div className="col-lg-12">

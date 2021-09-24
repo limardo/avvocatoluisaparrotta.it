@@ -36,7 +36,11 @@ const LogoStyled = styled.div`
 
 const Logo: React.FC<any> = () => {
   const mobile = useMobile();
-  const logoClassName = mobile ? 'mobile' : '';
+  const [logoClassName, setLogoClassName] = React.useState<string>('');
+
+  React.useEffect(() => {
+    setLogoClassName(mobile ? 'mobile' : '');
+  }, [mobile]);
 
   return (
     <LogoStyled className={logoClassName}>

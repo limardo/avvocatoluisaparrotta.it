@@ -46,8 +46,8 @@ const PracticeAreas: React.FC<{ data: PracticeAreasData }> = ({ data }) => {
   ));
 
   return (
-    <PracticeAreasStyled id={slug} aria-label="section" className="pt-0">
-      <div className="">
+    <PracticeAreasStyled aria-label="section" className="pt-0">
+      <div id={slug}>
         <div className="row g-0">
           <div
             className="col-lg-3 col-md-6 text-center align-self-center"
@@ -57,19 +57,18 @@ const PracticeAreas: React.FC<{ data: PracticeAreasData }> = ({ data }) => {
           >
             <h3 className="p-5 m-0">Servizi</h3>
           </div>
-
           {featureBoxes}
         </div>
       </div>
 
-      <PracticeAreasMakeAppointmentStyled id="practice-areas-section-1">
+      <PracticeAreasMakeAppointmentStyled id={`${slug}-bottom`}>
         <div className="container">
           <div className="row align-items-center">
             <div
               className="col-md-8 mb-4 mb-md-0 text-center text-md-start"
               data-aos="fade-right"
               data-aos-delay="200"
-              data-aos-anchor="#practice-areas-section-1"
+              data-aos-anchor={`#${slug}-bottom`}
             >
               <h3>{sloganText}</h3>
             </div>
@@ -77,7 +76,7 @@ const PracticeAreas: React.FC<{ data: PracticeAreasData }> = ({ data }) => {
               className="col-md-4 text-center text-md-start"
               data-aos="fade-left"
               data-aos-delay="400"
-              data-aos-anchor="#practice-areas-section-1"
+              data-aos-anchor={`#${slug}-bottom`}
             >
               <Link hash="contact" className="btn btn-black">
                 {sloganButton}

@@ -55,7 +55,11 @@ const PreloadStyled = styled.div`
 
 const Preload: React.FC<any> = () => {
   const loaded = usePreload();
-  const preloadClassname = loaded ? 'd-none' : 'd-flex';
+  const [preloadClassname, setPreloadClassname] = React.useState<string>('d-flex');
+
+  React.useEffect(() => {
+    setPreloadClassname(loaded ? 'd-none' : 'd-flex');
+  }, [loaded]);
 
   return (
     <PreloadStyled className={preloadClassname}>
