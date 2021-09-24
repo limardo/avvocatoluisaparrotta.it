@@ -19,6 +19,7 @@ export const query = graphql`
         googleVerification
         bingVerification
         yandexVerification
+        version
       }
     }
   }
@@ -34,10 +35,10 @@ const Seo: React.FC<any> = () => {
         lang
       }}
     >
-      <meta charSet="utf-8" />
       <title>{data.site.siteMetadata.title}</title>
-      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
       <meta content={data.site.siteMetadata.description} name="description" />
+
+      <meta content={data.site.siteMetadata.version} name="version" />
 
       <link rel="canonical" href={data.site.siteMetadata.siteUrl} />
 

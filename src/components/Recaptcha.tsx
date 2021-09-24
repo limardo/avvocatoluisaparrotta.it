@@ -15,7 +15,7 @@ export const query = graphql`
 const Recaptcha: React.FC<any> = ({ children }) => {
   const data = useStaticQuery(query);
 
-  return (
+  return data.site.siteMetadata.googleRecaptchaSitekey ? (
     <GoogleReCaptchaProvider
       reCaptchaKey={data.site.siteMetadata.googleRecaptchaSitekey}
       language="it"
@@ -29,6 +29,8 @@ const Recaptcha: React.FC<any> = ({ children }) => {
     >
       {children}
     </GoogleReCaptchaProvider>
+  ) : (
+    children
   );
 };
 
