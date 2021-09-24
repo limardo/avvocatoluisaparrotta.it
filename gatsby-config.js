@@ -12,7 +12,7 @@ module.exports = {
     googleVerification: process.env.GOOGLE_VERIFICATION || false,
     bingVerification: process.env.BING_VERIFICATION || false,
     yandexVerification: process.env.YANDEX_VERIFICATION || false,
-    googleRecaptchaSitekey: process.env.GOOGLE_RECAPTCHA_SITEKEY || '6LeUHWMcAAAAAChnVKJQ0a1zO_l1O001LUCDWi7s'
+    googleRecaptchaSitekey: process.env.GOOGLE_RECAPTCHA_SITEKEY || false
   },
   proxy: {
     prefix: '/scripts',

@@ -6,8 +6,8 @@ import styled from 'styled-components';
 const BackToTopStyled = styled.button`
   position: fixed;
   z-index: 1020;
-  right: 20px;
   bottom: -40px;
+  left: 20px;
   width: 40px;
   height: 40px;
   padding-top: 4px;
