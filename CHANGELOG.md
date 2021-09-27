@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.2.3 (2021-09-27)
+
+### Bug Fixes
+
+- hidden faq section ([fedd218](https://github.com/limardo/avvocatoluisaparrotta.it/commit/fedd218db1647b5b4aaa5edf90578aeb4dad746c))
+
 ### 1.2.2 (2021-09-27)
 
 ### 1.2.1 (2021-09-27)
