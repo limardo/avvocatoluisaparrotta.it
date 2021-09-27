@@ -5,7 +5,7 @@ import Layout from '../components/Layout';
 const Home = loadable(() => import(/* webpackPrefetch: true */ '../components/Home'));
 const About = loadable(() => import(/* webpackPrefetch: true */ '../components/About'));
 const PracticeAreas = loadable(() => import(/* webpackPrefetch: true */ '../components/PracticeAreas'));
-const Faq = loadable(() => import(/* webpackPrefetch: true */ '../components/Faq'));
+// const Faq = loadable(() => import(/* webpackPrefetch: true */ '../components/Faq'));
 const Contact = loadable(() => import(/* webpackPrefetch: true */ '../components/Contact'));
 
 const IndexPage: React.FC<void> = () => {
@@ -14,7 +14,9 @@ const IndexPage: React.FC<void> = () => {
       <Home />
       <About />
       <PracticeAreas />
+      {/*
       <Faq />
+      */}
       <Contact />
     </Layout>
   );
