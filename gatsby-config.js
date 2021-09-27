@@ -30,6 +30,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-typescript',
+    ...(process.env.NODE_ENV === 'production' ? ['gatsby-plugin-no-sourcemaps'] : []),
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
