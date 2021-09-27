@@ -1,9 +1,28 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import { PracticeAreasData } from '../data';
+import { FrontmatterData, PracticeAreasData } from '../data';
 import FeatureBox from './FeatureBox';
 import Link from './Link';
 import { List, ListItem } from './List';
+
+const query = graphql`
+  query PracticeAreasPageQuery {
+    practiceAreas: mdx(frontmatter: { slug: { eq: "practice-areas" } }) {
+      frontmatter {
+        title
+        slug
+        features {
+          title
+          icon
+          items
+        }
+        sloganText
+        sloganButton
+      }
+    }
+  }
+`;
 
 const PracticeAreasMakeAppointmentStyled = styled.div`
   position: relative;
@@ -24,8 +43,9 @@ const PracticeAreasStyled = styled.section`
   }
 `;
 
-const PracticeAreas: React.FC<{ data: PracticeAreasData }> = ({ data }) => {
-  const { slug, features, sloganText, sloganButton } = data;
+const PracticeAreas: React.FC<any> = () => {
+  const data = useStaticQuery<{ practiceAreas: FrontmatterData<PracticeAreasData> }>(query);
+  const { slug, features, sloganText, sloganButton } = data.practiceAreas.frontmatter;
 
   const featureBoxes = features.map((feat, index) => (
     <div

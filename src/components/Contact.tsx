@@ -1,9 +1,31 @@
 import { faChess, faEnvelopeOpenText, faFingerprint } from '@fortawesome/free-solid-svg-icons';
+import { graphql, useStaticQuery } from 'gatsby';
 import React, { FormEvent } from 'react';
 import styled from 'styled-components';
-import { ContactData } from '../data';
+import { ContactData, FrontmatterData } from '../data';
 import { useRecaptcha } from '../hooks/useRecaptcha';
 import FeatureBox from './FeatureBox';
+
+const query = graphql`
+  query ContactsPageQuery {
+    site {
+      siteMetadata {
+        googleRecaptchaSitekey
+      }
+    }
+    contact: mdx(frontmatter: { slug: { eq: "contact" } }) {
+      frontmatter {
+        title
+        slug
+        heading
+        features {
+          title
+          paragraph
+        }
+      }
+    }
+  }
+`;
 
 const ContactStyled = styled.section`
   position: relative;
@@ -59,8 +81,13 @@ const ContactFeaturesStyled = styled.section`
   padding-bottom: 90px;
 `;
 
-const Contact: React.FC<{ data: ContactData; recaptcha: boolean }> = ({ data, recaptcha }) => {
-  const { slug, heading, features } = data;
+const Contact: React.FC<any> = () => {
+  const data = useStaticQuery<{
+    contact: FrontmatterData<ContactData>;
+    site: { siteMetadata: { googleRecaptchaSitekey: string } };
+  }>(query);
+  const recaptcha = !!data.site.siteMetadata.googleRecaptchaSitekey;
+  const { slug, heading, features } = data.contact.frontmatter;
   const formRef = React.useRef<HTMLFormElement>(null);
   const execute = useRecaptcha(recaptcha);
 

@@ -1,10 +1,38 @@
 import { CountUp } from 'countup.js';
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import { AboutData } from '../data';
+import { AboutData, FrontmatterData } from '../data';
 import Bg9 from '../images/backgrounds/9.webp';
 import D1 from '../images/misc/d1.webp';
 import D2 from '../images/misc/d2.webp';
+
+const query = graphql`
+  query AboutPageQuery {
+    about: mdx(frontmatter: { slug: { eq: "about" } }) {
+      frontmatter {
+        title
+        slug
+        preheading
+        heading
+        paragraph
+        preheading2
+        heading2
+        paragraph2
+        preheading3
+        heading3
+        paragraph3
+        preheading4
+        heading4
+        paragraph4
+        counter1
+        counterText1
+        counter2
+        counterText2
+      }
+    }
+  }
+`;
 
 const AboutSectionLightStyled = styled.div`
   position: relative;
@@ -106,7 +134,8 @@ const AboutSectionDarkStyled = styled.div`
   }
 `;
 
-const About: React.FC<{ data: AboutData }> = ({ data }) => {
+const About: React.FC<any> = () => {
+  const data = useStaticQuery<{ about: FrontmatterData<AboutData> }>(query);
   const countCaseRef = React.useRef<HTMLHeadingElement>(null);
   const countYearsRef = React.useRef<HTMLHeadingElement>(null);
   const {
@@ -127,7 +156,7 @@ const About: React.FC<{ data: AboutData }> = ({ data }) => {
     counterText1,
     counter2,
     counterText2
-  } = data;
+  } = data.about.frontmatter;
 
   React.useEffect(() => {
     // @ts-ignore
