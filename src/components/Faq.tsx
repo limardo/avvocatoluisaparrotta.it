@@ -1,15 +1,42 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import { FaqData, FaqItemData } from '../data';
+import { FaqData, FaqItemData, FrontmatterData } from '../data';
 import { Accordion, AccordionItem } from './Accordion';
+
+const query = graphql`
+  query FaqPageQuery {
+    faq: mdx(frontmatter: { slug: { eq: "faq" } }) {
+      frontmatter {
+        title
+        slug
+        box1 {
+          title
+          items {
+            question
+            answer
+          }
+        }
+        box2 {
+          title
+          items {
+            question
+            answer
+          }
+        }
+      }
+    }
+  }
+`;
 
 const FaqStyled = styled.section`
   position: relative;
   padding-bottom: 30px;
 `;
 
-const Faq: React.FC<{ data: FaqData }> = ({ data }) => {
-  const { slug, box1, box2 } = data;
+const Faq: React.FC<any> = () => {
+  const data = useStaticQuery<{ faq: FrontmatterData<FaqData> }>(query);
+  const { slug, box1, box2 } = data.faq.frontmatter;
 
   const getAccordionItems = (items: Array<FaqItemData>) =>
     items.map((item, index) => (
