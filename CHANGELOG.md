@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.2.4 (2021-09-27)
+
+### Bug Fixes
+
+- updated fetch config ([d817679](https://github.com/limardo/avvocatoluisaparrotta.it/commit/d81767935bec983d6377a73c946166310cb19dde))
+
 ### 1.2.3 (2021-09-27)
 
 ### Bug Fixes
