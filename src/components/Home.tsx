@@ -1,9 +1,25 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Background, Parallax } from 'react-parallax';
 import styled from 'styled-components';
-import { HomeData } from '../data';
+import { FrontmatterData, HomeData } from '../data';
 import Bg5 from '../images/backgrounds/home.webp';
 import Link from './Link';
+
+const query = graphql`
+  query HomePageQuery {
+    home: mdx(frontmatter: { slug: { eq: "home" } }) {
+      frontmatter {
+        title
+        slug
+        preheading
+        heading
+        paragraph
+        button
+      }
+    }
+  }
+`;
 
 const HomeSection = styled.section`
   position: relative;
@@ -37,8 +53,9 @@ const HomeHeroImage = styled.div`
   background-size: cover;
 `;
 
-const Home: React.FC<{ data: HomeData }> = ({ data }) => {
-  const { slug, preheading, heading, paragraph, button } = data;
+const Home: React.FC<any> = () => {
+  const data = useStaticQuery<{ home: FrontmatterData<HomeData> }>(query);
+  const { slug, preheading, heading, paragraph, button } = data.home.frontmatter;
 
   return (
     <HomeSection id={slug} aria-label="section" className="vh-100 p-0 text-light">

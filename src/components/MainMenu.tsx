@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import { useMobile } from '../hooks/useMobile';
+import { usePreload } from '../hooks/usePreload';
 import Link from './Link';
 
 export interface MainMenuProps {
@@ -121,16 +122,25 @@ const MainMenu: React.FC<MainMenuProps> = ({ target }) => {
     allMdx: { nodes }
   } = useStaticQuery(query);
   const mobile = useMobile();
+  const loaded = usePreload();
   const [mainMenuClassname, setMainMenuClassname] = React.useState<string>('');
 
   React.useEffect(() => {
-    const scrollSpy = new ScrollSpy(document.body, {
-      target: target.current,
-      offset: 40
+    let scrollSpy = {
+      dispose() {}
+    };
+
+    new Promise<number>((resolve) => setTimeout(resolve, 1000)).then((c) => {
+      clearTimeout(c);
+
+      scrollSpy = new ScrollSpy(document.body, {
+        target: target.current,
+        offset: 40
+      });
     });
 
     return () => scrollSpy.dispose();
-  }, []);
+  }, [loaded]);
 
   React.useEffect(() => {
     setMainMenuClassname(mobile ? 'mobile' : '');
