@@ -23,11 +23,11 @@ export { wrapPageElement } from './src/wrap-page-element';
 
 export const onClientEntry = () => {
   document.addEventListener('readystatechange', () => {
-    if (document.readyState === 'complete') {
+    if (document.readyState === 'interactive') {
       setTimeout(() => {
         AOS.init();
         document.dispatchEvent(new CustomEvent('pageload'));
-      }, 1500);
+      }, 1000);
     }
   });
 };
