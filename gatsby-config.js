@@ -76,6 +76,22 @@ module.exports = {
         path: `${__dirname}/vendor`
       },
       __key: 'vendor'
+    },
+    {
+      resolve: 'gatsby-plugin-copy-files-enhanced',
+      options: {
+        source: `${__dirname}/scripts`,
+        destination: '/scripts/',
+        purge: true
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-copy-files-enhanced',
+      options: {
+        source: `${__dirname}/vendor`,
+        destination: '/vendor/',
+        purge: true
+      }
     }
   ]
 };
