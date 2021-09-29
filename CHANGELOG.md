@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.2.16 (2021-09-29)
+
+### Bug Fixes
+
+- csp ([6e3f276](https://github.com/limardo/avvocatoluisaparrotta.it/commit/6e3f2761d518eb76f70908a7d3e74425112abcbd))
+
 ### 1.2.15 (2021-09-29)
 
 ### Bug Fixes
