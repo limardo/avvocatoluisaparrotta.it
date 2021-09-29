@@ -51,6 +51,7 @@ module.exports = {
         mergeStyleHashes: false,
         mergeDefaultDirectives: true,
         directives: {
+          'default-src': "'self' www.google.com",
           'script-src': "'self' www.google-analytics.com www.googletagmanager.com www.google.com www.gstatic.com",
           'style-src': "'self' 'unsafe-inline' ",
           'img-src': "'self' data: www.google-analytics.com",
