@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.2.6 (2021-09-29)
+
+### Bug Fixes
+
+- updated gatsby-config ([220c12d](https://github.com/limardo/avvocatoluisaparrotta.it/commit/220c12d40e339f593afd7ba18871da577988c0c0))
+
 ### 1.2.5 (2021-09-29)
 
 ### Bug Fixes
