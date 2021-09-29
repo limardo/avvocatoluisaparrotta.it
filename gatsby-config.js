@@ -40,7 +40,6 @@ module.exports = {
         mergeDefaultDirectives: true,
         directives: {
           'script-src': "'self' www.google-analytics.com www.googletagmanager.com",
-          'style-src': '*',
           'img-src': "'self' data: www.google-analytics.com"
         }
       }
