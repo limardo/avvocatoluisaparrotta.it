@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.2.5 (2021-09-29)
+
+### Bug Fixes
+
+- updated images sizes ([0530440](https://github.com/limardo/avvocatoluisaparrotta.it/commit/0530440805ee67ef883017651d69e65df8600b24))
+
 ### 1.2.4 (2021-09-27)
 
 ### Bug Fixes
