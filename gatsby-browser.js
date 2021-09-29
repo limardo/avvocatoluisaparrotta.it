@@ -22,12 +22,10 @@ import AOS from 'aos';
 export { wrapPageElement } from './src/wrap-page-element';
 
 export const onClientEntry = () => {
-  document.addEventListener('readystatechange', () => {
-    if (document.readyState === 'interactive') {
-      setTimeout(() => {
-        AOS.init();
-        document.dispatchEvent(new CustomEvent('pageload'));
-      }, 1000);
-    }
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      AOS.init();
+      document.dispatchEvent(new CustomEvent('pageload'));
+    }, 1000);
   });
 };
