@@ -80,6 +80,10 @@
 
 <IfModule mod_headers.c>
     Header set Referrer-Policy "no-referrer-when-downgrade"
+    Header set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-Frame-Options "SAMEORIGIN"
 </IfModule>
 
 <IfModule mod_rewrite.c>
