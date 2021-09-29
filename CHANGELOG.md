@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.2.7 (2021-09-29)
+
+### Bug Fixes
+
+- performance optimisation ([d71e550](https://github.com/limardo/avvocatoluisaparrotta.it/commit/d71e55033f7b202bd3c8d16fab85f6090deb2580))
+
 ### 1.2.6 (2021-09-29)
 
 ### Bug Fixes
