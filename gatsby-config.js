@@ -3,7 +3,7 @@ const package = require('./package.json');
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://www.avvocatoluisaparrotta.it',
-    title: 'Avvocato  Luisa Parrotta',
+    title: 'Avvocato Luisa Parrotta - Il tuo migliore avvocato',
     description:
       'Avvocato Luisa Parrotta - Studio Legale Luisa Parrotta, è aiutare il cliente in difficoltà, Richiedi una consulenza esclusivamente gratuita.',
     phone: '+39 380 189 2602',
@@ -30,14 +30,13 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-typescript',
-    ...(process.env.NODE_ENV === 'production' ? ['gatsby-plugin-no-sourcemaps'] : []),
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingIds: [...(process.env.GOOGLE_ANALYTICS ? [process.env.GOOGLE_ANALYTICS] : [])],
-        pluginConfig: {
-          head: true
-        }
+        trackingIds: [
+          ...(process.env.GOOGLE_ANALYTICS ? [process.env.GOOGLE_ANALYTICS] : []),
+          ...(process.env.GOOGLE_TAG_MANAGER ? [process.env.GOOGLE_TAG_MANAGER] : [])
+        ]
       }
     },
     {
@@ -77,22 +76,6 @@ module.exports = {
         path: `${__dirname}/vendor`
       },
       __key: 'vendor'
-    },
-    {
-      resolve: 'gatsby-plugin-copy-files-enhanced',
-      options: {
-        source: `${__dirname}/scripts`,
-        destination: '/scripts/',
-        purge: true
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-copy-files-enhanced',
-      options: {
-        source: `${__dirname}/vendor`,
-        destination: '/vendor/',
-        purge: true
-      }
     }
   ]
 };

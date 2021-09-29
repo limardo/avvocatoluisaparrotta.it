@@ -1,11 +1,10 @@
 import { CountUp } from 'countup.js';
 import { graphql, useStaticQuery } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
 import { AboutData, FrontmatterData } from '../data';
 import Bg9 from '../images/backgrounds/9.webp';
-import D1 from '../images/misc/d1.webp';
-import D2 from '../images/misc/d2.webp';
 
 const query = graphql`
   query AboutPageQuery {
@@ -206,28 +205,22 @@ const About: React.FC<any> = () => {
                   <h1 ref={countCaseRef}>{counter1}</h1>
                   <span>{counterText1}</span>
                 </div>
-                <img
+                <div
                   className="di-small-2"
-                  src={D2}
-                  alt=""
-                  width={600}
-                  height={450}
-                  tabIndex={0}
                   data-aos="fade-down"
                   data-aos-delay="600"
                   data-aos-anchor="#about-section-1"
-                />
-                <img
+                >
+                  <StaticImage src="../images/misc/d2.webp" alt="" width={600} height={450} tabIndex={0} />
+                </div>
+                <div
                   className="di-big img-fluid"
-                  src={D1}
-                  alt=""
-                  width={600}
-                  height={450}
-                  tabIndex={0}
                   data-aos="fade"
                   data-aos-delay="400"
                   data-aos-anchor="#about-section-1"
-                />
+                >
+                  <StaticImage src="../images/misc/d1.webp" alt="" width={600} height={450} tabIndex={0} />
+                </div>
               </div>
             </div>
           </div>
