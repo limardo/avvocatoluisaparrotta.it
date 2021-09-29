@@ -31,6 +31,21 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-typescript',
     {
+      resolve: 'gatsby-plugin-csp',
+      options: {
+        disableOnDev: true,
+        reportOnly: false,
+        mergeScriptHashes: true,
+        mergeStyleHashes: true,
+        mergeDefaultDirectives: true,
+        directives: {
+          'script-src': "'self' www.google-analytics.com www.googletagmanager.com",
+          'style-src': "'self' 'unsafe-inline'",
+          'img-src': "'self' data: www.google-analytics.com"
+        }
+      }
+    },
+    {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
         trackingIds: [
