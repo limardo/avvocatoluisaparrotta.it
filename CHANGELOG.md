@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.2.8 (2021-09-29)
+
+### Bug Fixes
+
+- removed load bug ([1c0fa06](https://github.com/limardo/avvocatoluisaparrotta.it/commit/1c0fa064ee8900b6fafc8b5b725ef401521cd964))
+
 ### 1.2.7 (2021-09-29)
 
 ### Bug Fixes
