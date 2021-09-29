@@ -36,7 +36,10 @@ module.exports = {
         trackingIds: [
           ...(process.env.GOOGLE_ANALYTICS ? [process.env.GOOGLE_ANALYTICS] : []),
           ...(process.env.GOOGLE_TAG_MANAGER ? [process.env.GOOGLE_TAG_MANAGER] : [])
-        ]
+        ],
+        pluginConfig: {
+          head: false
+        }
       }
     },
     {
