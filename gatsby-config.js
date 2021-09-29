@@ -31,6 +31,18 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-typescript',
     {
+      resolve: 'gatsby-plugin-purgecss',
+      options: {
+        ignore: ['aos/']
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-preconnect',
+      options: {
+        domains: ['https://www.avvocatoluisaparrotta.it']
+      }
+    },
+    {
       resolve: 'gatsby-plugin-csp',
       options: {
         disableOnDev: true,
@@ -39,7 +51,7 @@ module.exports = {
         mergeStyleHashes: false,
         mergeDefaultDirectives: true,
         directives: {
-          'script-src': "'self' www.google-analytics.com www.googletagmanager.com www.google.com",
+          'script-src': "'self' www.google-analytics.com www.googletagmanager.com www.google.com www.gstatic.com",
           'style-src': "'self' 'unsafe-inline' ",
           'img-src': "'self' data: www.google-analytics.com",
           'connect-src': "'self' www.google-analytics.com"

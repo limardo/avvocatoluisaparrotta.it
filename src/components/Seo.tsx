@@ -27,7 +27,7 @@ export const query = graphql`
 
 const Seo: React.FC<any> = () => {
   const data = useStaticQuery(query);
-  const lang = 'it_IT';
+  const lang = 'it';
 
   return (
     <Helmet
