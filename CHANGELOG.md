@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.2.10 (2021-09-29)
+
+### Bug Fixes
+
+- updated cps ([737e3a5](https://github.com/limardo/avvocatoluisaparrotta.it/commit/737e3a56e1faf8284ed604fb0acd65c17611b367))
+
 ### 1.2.9 (2021-09-29)
 
 ### Bug Fixes
