@@ -50,8 +50,7 @@ const MainMenuStyled = styled.ul`
     &:focus {
       color: #fff;
     }
-
-    &.active,
+    a &.active,
     &:hover {
       color: var(--primary-color);
     }
