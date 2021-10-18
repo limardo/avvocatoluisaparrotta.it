@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.3.0 (2021-10-18)
+
+### Features
+
+- added gdpr banner ([cdf127f](https://github.com/limardo/avvocatoluisaparrotta.it/commit/cdf127f85cb65d648a03a030e495a7b8c832781d))
+
 ### 1.2.17 (2021-09-29)
 
 ### Bug Fixes
