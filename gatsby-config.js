@@ -73,6 +73,19 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-cookiehub-banner`,
+      options: {
+        cookieHubId: process.env.COOKIEHUB_ID || '',
+        cookieHubV2Api: true,
+        categories: [
+          {
+            categoryName: 'analytics',
+            cookieName: 'google-analytics-enabled'
+          }
+        ]
+      }
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: 'src/images/icon.png'
