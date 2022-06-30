@@ -51,12 +51,12 @@ module.exports = {
         mergeStyleHashes: false,
         mergeDefaultDirectives: true,
         directives: {
-          'default-src': "'self' www.google.com",
-          'script-src':
-            "'self' 'strict-dynamic' www.google-analytics.com www.googletagmanager.com www.google.com www.gstatic.com",
-          'style-src': "'self' 'unsafe-inline' ",
-          'img-src': "'self' data: www.google-analytics.com",
-          'connect-src': "'self' www.google-analytics.com"
+          'default-src': "'self' https:",
+          'script-src': "'self' 'unsafe-inline' https:",
+          'style-src': "'self' https:",
+          'img-src': "'self' *",
+          'connect-src': "'self' https:",
+          'prefetch-src': "'self' https:"
         }
       }
     },
