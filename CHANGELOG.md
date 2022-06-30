@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.3.3 (2022-06-30)
+
+### Bug Fixes
+
+- disabled csp ([79d3ce8](https://github.com/limardo/avvocatoluisaparrotta.it/commit/79d3ce89d4181b5ce15f3db4741df7e731531082))
+
 ### 1.3.2 (2022-06-30)
 
 ### Bug Fixes
