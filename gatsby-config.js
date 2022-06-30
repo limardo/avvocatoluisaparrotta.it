@@ -48,7 +48,7 @@ module.exports = {
         disableOnDev: true,
         reportOnly: false,
         mergeScriptHashes: true,
-        mergeStyleHashes: false,
+        mergeStyleHashes: true,
         mergeDefaultDirectives: true,
         directives: {
           'default-src': "'self' https:",
