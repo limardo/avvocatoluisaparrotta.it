@@ -42,24 +42,24 @@ module.exports = {
         domains: ['https://www.avvocatoluisaparrotta.it']
       }
     },
-    {
-      resolve: 'gatsby-plugin-csp',
-      options: {
-        disableOnDev: true,
-        reportOnly: false,
-        mergeScriptHashes: true,
-        mergeStyleHashes: true,
-        mergeDefaultDirectives: true,
-        directives: {
-          'default-src': "'self' https:",
-          'script-src': "'self' 'unsafe-inline' https:",
-          'style-src': "'self' https:",
-          'img-src': "'self' *",
-          'connect-src': "'self' https:",
-          'prefetch-src': "'self' https:"
-        }
-      }
-    },
+    // {
+    //   resolve: 'gatsby-plugin-csp',
+    //   options: {
+    //     disableOnDev: true,
+    //     reportOnly: false,
+    //     mergeScriptHashes: true,
+    //     mergeStyleHashes: true,
+    //     mergeDefaultDirectives: true,
+    //     directives: {
+    //       'default-src': "'self' https:",
+    //       'script-src': "'self' https:",
+    //       'style-src': "'self' 'unsafe-inline' https:",
+    //       'img-src': "'self' *",
+    //       'connect-src': "'self' https:",
+    //       'prefetch-src': "'self' https:"
+    //     }
+    //   }
+    // },
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
