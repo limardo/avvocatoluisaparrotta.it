@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.3.1 (2022-06-30)
+
+### Bug Fixes
+
+- updated cps rules ([e215758](https://github.com/limardo/avvocatoluisaparrotta.it/commit/e215758f1bc7c23983a7254dfbebef0c86caa38c))
+
 ## 1.3.0 (2021-10-18)
 
 ### Features
