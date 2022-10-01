@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.4.0 (2022-10-01)
+
+### Features
+
+- upgraded gatsby and csp ([64f66ce](https://github.com/limardo/avvocatoluisaparrotta.it/commit/64f66ce4fd56556b376273dc5730467ba9fe41c1))
+
 ### 1.3.4 (2022-10-01)
 
 ### Bug Fixes
