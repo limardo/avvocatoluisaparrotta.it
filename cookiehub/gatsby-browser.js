@@ -1,4 +1,9 @@
-export const onClientEntry = (_, pluginOptions = {}) => {
+exports.onClientEntry = (_, pluginOptions = {}) => {
+  console.info('>', pluginOptions);
+  if (process.env.NODE_ENV !== `production` && !pluginOptions.cookieHubId) {
+    return null;
+  }
+
   const cookieNames = (pluginOptions.categories || []).reduce((a, c) => {
     a[c.categoryName] = c.cookieName;
     return a;
