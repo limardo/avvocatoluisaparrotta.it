@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.4.1 (2022-10-01)
+
+### Bug Fixes
+
+- added gdpr ([6185f9f](https://github.com/limardo/avvocatoluisaparrotta.it/commit/6185f9f9ab973c5d0d079a94794bca8836170c18))
+
 ## 1.4.0 (2022-10-01)
 
 ### Features
