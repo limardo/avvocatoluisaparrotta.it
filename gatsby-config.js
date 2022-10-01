@@ -61,6 +61,15 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-google-analytics-gdpr`,
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS || '',
+        enableDevelopment: false,
+        anonymizeIP: true,
+        autoStartWithCookiesEnabled: false
+      }
+    },
+    {
       resolve: `gatsby-plugin-cookiehub-banner`,
       options: {
         cookieHubId: process.env.COOKIEHUB_ID || '',
@@ -68,7 +77,7 @@ module.exports = {
         categories: [
           {
             categoryName: 'analytics',
-            cookieName: 'google-analytics-enabled'
+            cookieName: 'gatsby-plugin-google-analytics-gdpr_cookies-enabled'
           }
         ]
       }
