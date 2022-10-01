@@ -63,7 +63,7 @@ module.exports = {
     {
       resolve: require.resolve(`./cookiehub`),
       options: {
-        cookieHubId: process.env.COOKIEHUB_ID || '',
+        cookieHubId: process.env.COOKIEHUB_ID || '5300a230',
         categories: [
           {
             categoryName: 'analytics',

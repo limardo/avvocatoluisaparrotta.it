@@ -1,5 +1,4 @@
 exports.onClientEntry = (_, pluginOptions = {}) => {
-  console.info('>', pluginOptions);
   if (process.env.NODE_ENV !== `production` && !pluginOptions.cookieHubId) {
     return null;
   }
