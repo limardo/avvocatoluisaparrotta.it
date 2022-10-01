@@ -5,7 +5,7 @@ module.exports = {
     siteUrl: 'https://www.avvocatoluisaparrotta.it',
     title: 'Avvocato Luisa Parrotta - Il tuo migliore avvocato',
     description:
-      'Avvocato Luisa Parrotta - Studio Legale Luisa Parrotta, è aiutare il cliente in difficoltà, Richiedi una consulenza esclusivamente gratuita.',
+      'Avvocato Luisa Parrotta - Studio Legale Luisa Parrotta, è aiutare il cliente in difficoltà, Richiedi una consulenza.',
     phone: '+39 380 189 2602',
     email: 'info@avvocatoluisaparrotta.it',
     facebook: 'https://www.facebook.com/avvocatoluisaparrotta',
