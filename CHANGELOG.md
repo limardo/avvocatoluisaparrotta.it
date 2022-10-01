@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.3.4 (2022-10-01)
+
+### Bug Fixes
+
+- removed free consultation ([c0d3754](https://github.com/limardo/avvocatoluisaparrotta.it/commit/c0d3754627066191ecbbad0e22cab3ec047d9b8e))
+
 ### 1.3.3 (2022-06-30)
 
 ### Bug Fixes
