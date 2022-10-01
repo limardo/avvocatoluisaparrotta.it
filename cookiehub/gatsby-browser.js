@@ -1,8 +1,4 @@
 export const onClientEntry = (_, pluginOptions = {}) => {
-  if (!pluginOptions.cookieHubId) {
-    return;
-  }
-
   const cookieNames = (pluginOptions.categories || []).reduce((a, c) => {
     a[c.categoryName] = c.cookieName;
     return a;
