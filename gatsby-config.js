@@ -24,7 +24,6 @@ module.exports = {
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-mdx',
     'gatsby-plugin-sharp',
@@ -42,24 +41,13 @@ module.exports = {
         domains: ['https://www.avvocatoluisaparrotta.it']
       }
     },
-    // {
-    //   resolve: 'gatsby-plugin-csp',
-    //   options: {
-    //     disableOnDev: true,
-    //     reportOnly: false,
-    //     mergeScriptHashes: true,
-    //     mergeStyleHashes: true,
-    //     mergeDefaultDirectives: true,
-    //     directives: {
-    //       'default-src': "'self' https:",
-    //       'script-src': "'self' https:",
-    //       'style-src': "'self' 'unsafe-inline' https:",
-    //       'img-src': "'self' *",
-    //       'connect-src': "'self' https:",
-    //       'prefetch-src': "'self' https:"
-    //     }
-    //   }
-    // },
+    {
+      resolve: 'gatsby-plugin-csp',
+      options: {
+        disableOnDev: true,
+        reportOnly: true
+      }
+    },
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {

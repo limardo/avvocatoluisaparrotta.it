@@ -1,6 +1,7 @@
 import loadable from '@loadable/component';
 import React from 'react';
 import Layout from '../components/Layout';
+import Seo from '../components/Seo';
 
 const Home = loadable(() => import('../components/Home'));
 const About = loadable(() => import('../components/About'));
@@ -23,3 +24,5 @@ const IndexPage: React.FC<void> = () => {
 };
 
 export default IndexPage;
+
+export const Head = () => <Seo />;

@@ -17,9 +17,9 @@ const PracticeAreaBoxIconStyled = styled.i<{ icon: string | IconProp }>`
   width: 80px;
   height: 80px;
   padding: 22px;
+  border-radius: 2px;
   margin-right: 30px;
   background: var(--primary-color);
-  border-radius: 2px;
   color: #f8f9fa;
   font-size: 36px;
   text-align: center;

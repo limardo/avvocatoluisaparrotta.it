@@ -33,9 +33,9 @@ const FontAwesomeIconSocialStyled = styled.a`
   align-items: center;
   justify-content: center;
   padding: 8px;
+  border-radius: 2px;
   margin: 0 5px;
   background-color: var(--primary-color);
-  border-radius: 2px;
   font-size: 16px;
   text-align: center;
   transition: 0.7s ease-out;
@@ -75,9 +75,9 @@ const FooterWidgetStyled = styled.div`
     span {
       display: block;
       padding: 0;
+      border-radius: 300px;
       margin: 0;
       background: none;
-      border-radius: 300px;
       font-size: 15px;
       line-height: 1.7em;
 
@@ -126,7 +126,7 @@ const FooterPracticeAreasListStyled = styled.ul`
   margin: 0 0 60px;
 
   li {
-    margin: 5px 0 5px 0;
+    margin: 5px 0;
 
     ${FontAwesomeIconPracticeAreasListItemStyled} {
       margin-right: 15px;
@@ -141,12 +141,12 @@ const FooterNewsletterStyled = styled.form`
   input[type='text'] {
     display: table-cell;
     width: 80%;
-    padding: 9px 12px 9px 12px;
+    padding: 9px 12px;
     border: solid 1px #333;
-    border-right: none;
-    background: rgba(255, 255, 255, 0.1);
     border-radius: 2px 0 0 2px;
-    box-shadow: 2px 2px 20px 0 rgba(20, 20, 20, 0.05);
+    border-right: none;
+    background: rgb(255 255 255 / 10%);
+    box-shadow: 2px 2px 20px 0 rgb(20 20 20 / 5%);
     color: #fff;
     float: left;
     outline: none;
@@ -167,12 +167,12 @@ const FooterNewsletterStyled = styled.form`
 
 const FooterSubfooterStyled = styled.div`
   padding: 20px 0;
-  border-top: solid 1px rgba(255, 255, 255, 0.1);
+  border-top: solid 1px rgb(255 255 255 / 10%);
   margin-top: 40px;
 `;
 
 const FooterStyled = styled.footer`
-  padding: 80px 0 0 0;
+  padding: 80px 0 0;
   background: #111;
   color: #fff;
   font-size: 14px;

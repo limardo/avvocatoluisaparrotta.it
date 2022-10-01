@@ -1,6 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import Logo from '../images/logo.png';
 
 export const query = graphql`
@@ -30,11 +29,7 @@ const Seo: React.FC<any> = () => {
   const lang = 'it';
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang
-      }}
-    >
+    <React.Fragment>
       <title>{data.site.siteMetadata.title}</title>
       <meta content={data.site.siteMetadata.description} name="description" />
 
@@ -70,7 +65,7 @@ const Seo: React.FC<any> = () => {
       {data.site.siteMetadata.yandexVerification && (
         <meta name="yandex-verification" content={data.site.siteMetadata.yandexVerification} />
       )}
-    </Helmet>
+    </React.Fragment>
   );
 };
 

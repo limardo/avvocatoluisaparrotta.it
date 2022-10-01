@@ -31,7 +31,7 @@ const BackgroundIconStyled = styled.i<{ icon: IconProp | string }>`
   width: auto;
   height: auto;
   background: none;
-  color: rgba(0, 0, 0, 0.2);
+  color: rgb(0 0 0 / 20%);
   font-size: 240px;
   letter-spacing: -0.05em;
   opacity: 0.2;
@@ -62,7 +62,7 @@ const FeatureBoxStyled = styled.div`
 
   &:hover {
     background: var(--primary-color);
-    box-shadow: 2px 2px 30px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 30px 0 rgb(0 0 0 / 20%);
     color: #fff;
 
     ${MainIconStyled},

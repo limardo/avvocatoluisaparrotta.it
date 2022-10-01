@@ -46,7 +46,7 @@ const AboutSectionLightStyled = styled.div`
     .di-text,
     img {
       border-radius: 2px;
-      box-shadow: 2px 20px 30px 0 rgba(20, 20, 20, 0.3);
+      box-shadow: 2px 20px 30px 0 rgb(20 20 20 / 30%);
     }
 
     .di-text {

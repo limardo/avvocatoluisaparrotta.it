@@ -113,7 +113,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     &:hover {
-      box-shadow: 2px 2px 20px 0 rgba(20, 20, 20, 0.3);
+      box-shadow: 2px 2px 20px 0 rgb(20 20 20 / 30%);
       color: #fff;
     }
   }
@@ -139,12 +139,13 @@ export const GlobalStyle = createGlobalStyle`
     width: 100px;
     height: 3px;
     border-top: solid 2px #333;
-    border-top-color: rgb(51, 51, 51);
+    border-top-color: rgb(51 51 51);
     border-right: none;
-    border-right-color: currentColor;
+    border-right-color: currentcolor;
     border-bottom-color: var(--primary-color);
     border-left: none;
-    border-left-color: currentColor;
+    /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
+    border-left-color: currentcolor;
     margin: 0 auto 30px;
   }
 

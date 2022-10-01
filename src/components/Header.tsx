@@ -15,7 +15,7 @@ const HeaderStyled = styled.header`
   width: 100%;
   height: 90px;
   margin: 0;
-  background: rgba(20, 20, 20, 0.8);
+  background: rgb(20 20 20 / 80%);
   outline: none;
   transition: 0.7s;
 
@@ -66,8 +66,8 @@ const HeaderStyled = styled.header`
     top: 0;
     padding: 0;
     border: 0;
-    background: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 4px 6px 0 rgba(10, 10, 10, 0.05);
+    background: rgb(0 0 0 / 80%);
+    box-shadow: 0 4px 6px 0 rgb(10 10 10 / 5%);
   }
 
   @media (max-width: 991px) {

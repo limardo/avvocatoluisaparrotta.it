@@ -7,12 +7,10 @@ const PreloadStyled = styled.div`
     0%,
     80%,
     100% {
-      -webkit-transform: scale(0);
       transform: scale(0);
     }
 
     40% {
-      -webkit-transform: scale(1);
       transform: scale(1);
     }
   }
@@ -36,11 +34,11 @@ const PreloadStyled = styled.div`
       display: block;
       width: 18px;
       height: 18px;
+      border-radius: 100%;
       margin: 0 5px;
       animation: sk-bouncedelay 1.4s infinite ease-in-out both;
       animation-delay: 0s;
       background: var(--primary-color);
-      border-radius: 100%;
 
       &:nth-child(0) {
         animation-delay: -0.32s;

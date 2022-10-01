@@ -12,8 +12,8 @@ const BackToTopStyled = styled.button`
   height: 40px;
   padding-top: 4px;
   border: 0;
-  background: var(--primary-color);
   border-radius: 2px;
+  background: var(--primary-color);
   cursor: pointer;
   line-height: 30px;
   opacity: 0;

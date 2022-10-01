@@ -50,6 +50,7 @@ const MainMenuStyled = styled.ul`
     &:focus {
       color: #fff;
     }
+
     a &.active,
     &:hover {
       color: var(--primary-color);
@@ -60,10 +61,10 @@ const MainMenuStyled = styled.ul`
     overflow: hidden;
     height: 30px;
     padding: 0;
-    margin: 0 0;
-    background: #fff;
     border-radius: 2px;
-    box-shadow: 2px 2px 30px 0 rgba(20, 20, 20, 0.1);
+    margin: 0;
+    background: #fff;
+    box-shadow: 2px 2px 30px 0 rgb(20 20 20 / 10%);
   }
 
   li {

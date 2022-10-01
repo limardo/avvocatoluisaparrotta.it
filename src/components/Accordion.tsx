@@ -37,10 +37,10 @@ const AccordionItemStyled = styled.div`
       &::after {
         width: 25px;
         height: 25px;
+        border-radius: 3px;
         background-color: var(--primary-color);
         background-image: url('data:image/svg+xml,<svg color="white" width="1" height="1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path></svg>');
         background-position: center;
-        border-radius: 3px;
       }
 
       &:not(.collapsed) {
@@ -54,9 +54,9 @@ const AccordionItemStyled = styled.div`
 
 const AccordionStyled = styled.div`
   padding: 5px;
-  background: var(--primary-color);
   border-radius: 2px;
-  box-shadow: 5px 5px 40px 0 rgba(0, 0, 0, 0.1);
+  background: var(--primary-color);
+  box-shadow: 5px 5px 40px 0 rgb(0 0 0 / 10%);
 
   .heading {
     padding: 15px 10px 0;
@@ -70,9 +70,9 @@ const AccordionStyled = styled.div`
 
   .content {
     padding: 20px;
+    border-radius: 2px;
     margin: 5px;
     background: #fff;
-    border-radius: 2px;
     color: #111;
   }
 `;

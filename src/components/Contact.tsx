@@ -36,13 +36,13 @@ const ContactStyled = styled.section`
   select,
   input[type='text'] {
     border: none;
-    background: rgba(255, 255, 255, 0.1);
     border-radius: 2px;
+    background: rgb(255 255 255 / 10%);
     box-shadow: none;
     color: #fff;
 
     &:focus {
-      background: rgba(255, 255, 255, 0.3);
+      background: rgb(255 255 255 / 30%);
       box-shadow: none;
       color: #fff;
     }
