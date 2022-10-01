@@ -61,23 +61,13 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-google-analytics-gdpr`,
-      options: {
-        trackingId: process.env.GOOGLE_ANALYTICS || '',
-        enableDevelopment: false,
-        anonymizeIP: true,
-        autoStartWithCookiesEnabled: false
-      }
-    },
-    {
-      resolve: `gatsby-plugin-cookiehub-banner`,
+      resolve: require.resolve(`./cookiehub`),
       options: {
         cookieHubId: process.env.COOKIEHUB_ID || '',
-        cookieHubV2Api: true,
         categories: [
           {
             categoryName: 'analytics',
-            cookieName: 'gatsby-plugin-google-analytics-gdpr_cookies-enabled'
+            cookieName: 'gdpr-enabled'
           }
         ]
       }
