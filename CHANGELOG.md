@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.5.2 (2022-10-01)
+
+### Bug Fixes
+
+- changed cookiehub plugin ([98a1f36](https://github.com/limardo/avvocatoluisaparrotta.it/commit/98a1f3657b4f761416e09f041dce64c77c558c4f))
+
 ### 1.5.1 (2022-10-01)
 
 ### Bug Fixes
