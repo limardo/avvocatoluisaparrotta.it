@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.5.6 (2022-10-03)
+
+### Bug Fixes
+
+- updated csp directives ([761546c](https://github.com/limardo/avvocatoluisaparrotta.it/commit/761546c9ada79862b19e9cd422bdc94af57d5e16))
+
 ### 1.5.5 (2022-10-03)
 
 ### Bug Fixes
