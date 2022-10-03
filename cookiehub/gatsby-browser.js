@@ -1,9 +1,11 @@
 exports.onClientEntry = (_, pluginOptions = {}) => {
-  if (process.env.NODE_ENV !== `production` && !pluginOptions.cookieHubId) {
+  const { categories } = pluginOptions;
+
+  if (!window.cookiehub) {
     return null;
   }
 
-  const cookieNames = (pluginOptions.categories || []).reduce((a, c) => {
+  const cookieNames = (categories || []).reduce((a, c) => {
     a[c.categoryName] = c.cookieName;
     return a;
   }, {});
@@ -32,16 +34,5 @@ exports.onClientEntry = (_, pluginOptions = {}) => {
     }
   };
 
-  const handleLoadCookieHub = (h, u, b) => {
-    const d = h.getElementsByTagName('script')[0];
-    const e = h.createElement('script');
-
-    e.async = true;
-    e.src = `https://cookiehub.net/c2/${pluginOptions.cookieHubId}.js`;
-    e.onload = () => u.cookiehub.load(b);
-
-    d.parentNode.insertBefore(e, d);
-  };
-
-  handleLoadCookieHub(document, window, cpm);
+  window.cookiehub.load(cpm);
 };
