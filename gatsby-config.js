@@ -44,8 +44,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-csp',
       options: {
-        disableOnDev: true,
-        reportOnly: true
+        disableOnDev: false,
+        reportOnly: false,
+        directives: {
+          'script-src': "'self' 'strict-dynamic'"
+        }
       }
     },
     {

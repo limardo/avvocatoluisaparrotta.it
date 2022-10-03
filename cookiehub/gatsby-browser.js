@@ -1,7 +1,7 @@
 exports.onClientEntry = (_, pluginOptions = {}) => {
-  const { categories } = pluginOptions;
+  const { disableOnDev, cookieHubId, categories } = pluginOptions;
 
-  if (!window.cookiehub) {
+  if (process.env.NODE_ENV === 'development' && disableOnDev && !cookieHubId) {
     return null;
   }
 
@@ -34,5 +34,16 @@ exports.onClientEntry = (_, pluginOptions = {}) => {
     }
   };
 
-  window.cookiehub.load(cpm);
+  const handleLoadCookieHub = (h, u, b) => {
+    const d = h.getElementsByTagName('script')[0];
+    const e = h.createElement('script');
+
+    e.async = true;
+    e.src = `https://cookiehub.net/c2/${cookieHubId}.js`;
+    e.onload = () => u.cookiehub.load(b);
+
+    d.parentNode.insertBefore(e, d);
+  };
+
+  handleLoadCookieHub(document, window, cpm);
 };
