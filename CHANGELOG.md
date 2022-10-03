@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.5.4 (2022-10-03)
+
+### Bug Fixes
+
+- cookiehub ([37cd653](https://github.com/limardo/avvocatoluisaparrotta.it/commit/37cd65359b65f848da9af376e7482afdca0772f3))
+
 ### 1.5.3 (2022-10-01)
 
 ### Bug Fixes
