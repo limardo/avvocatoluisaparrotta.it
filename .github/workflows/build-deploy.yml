@@ -53,6 +53,7 @@ jobs:
       - name: Build
         run: npm run build --if-present
         env:
+          COOKIEHUB_ID: ${{ secrets.COOKIEHUB_ID }}
           GOOGLE_VERIFICATION: ${{ secrets.GOOGLE_VERIFICATION }}
           BING_VERIFICATION: ${{ secrets.BING_VERIFICATION }}
           YANDEX_VERIFICATION: ${{ secrets.YANDEX_VERIFICATION }}
