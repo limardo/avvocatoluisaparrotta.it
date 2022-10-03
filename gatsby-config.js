@@ -41,13 +41,13 @@ module.exports = {
         domains: ['https://www.avvocatoluisaparrotta.it']
       }
     },
-    {
-      resolve: 'gatsby-plugin-csp',
-      options: {
-        disableOnDev: false,
-        reportOnly: false
-      }
-    },
+    // {
+    //   resolve: 'gatsby-plugin-csp',
+    //   options: {
+    //     disableOnDev: false,
+    //     reportOnly: false
+    //   }
+    // },
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
