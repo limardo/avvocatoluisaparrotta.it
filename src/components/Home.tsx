@@ -79,7 +79,7 @@ const Home: React.FC<any> = () => {
               transformOptions={{ fit: 'cover' }}
               alt="Avv. Luisa Parrotta"
               src={'../images/backgrounds/home.webp'}
-              formats={['auto', 'webp', 'avif']}
+              loading="eager"
             />
           </HomeHeroImage>
         </Background>

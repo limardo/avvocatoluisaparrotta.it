@@ -293,6 +293,7 @@ const Footer: React.FC<any> = () => {
                   className="logo mb-20"
                   width={1200}
                   height={287}
+                  loading="eager"
                 />
               </a>
               <address>

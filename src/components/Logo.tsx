@@ -45,8 +45,15 @@ const Logo: React.FC<any> = () => {
   return (
     <LogoStyled className={logoClassName}>
       <a href="/" aria-label="logo">
-        <StaticImage src="../images/logo-light.svg" alt="Logo" className="logo" width={1200} height={287} />
-        <StaticImage src="../images/logo.svg" alt="Logo" className="logo-2" width={1200} height={287} />
+        <StaticImage
+          src="../images/logo-light.svg"
+          alt="Logo"
+          className="logo"
+          width={1200}
+          height={287}
+          loading="eager"
+        />
+        <StaticImage src="../images/logo.svg" alt="Logo" className="logo-2" width={1200} height={287} loading="eager" />
       </a>
     </LogoStyled>
   );
