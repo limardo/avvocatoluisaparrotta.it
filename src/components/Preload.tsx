@@ -16,11 +16,8 @@ const PreloadStyled = styled.div`
   }
 
   position: fixed;
-  z-index: 20000;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  z-index: 10000000;
+  inset: 0;
   display: none;
   align-items: center;
   justify-content: center;
@@ -37,15 +34,15 @@ const PreloadStyled = styled.div`
       border-radius: 100%;
       margin: 0 5px;
       animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-      animation-delay: 0s;
+      animation-delay: -0.32s;
       background: var(--primary-color);
-
-      &:nth-child(0) {
-        animation-delay: -0.32s;
-      }
 
       &:nth-child(1) {
         animation-delay: -0.16s;
+      }
+
+      &:nth-child(2) {
+        animation-delay: 0s;
       }
     }
   }
