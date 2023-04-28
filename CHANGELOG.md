@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.6.1 (2023-04-28)
+
+### Bug Fixes
+
+- updated images ([3fbd2b6](https://github.com/limardo/avvocatoluisaparrotta.it/commit/3fbd2b696c3fc8420dc5a90cae8d2e03c9ee89a5))
+
 ## 1.6.0 (2023-04-28)
 
 ### Features
