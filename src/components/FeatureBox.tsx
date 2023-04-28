@@ -7,7 +7,7 @@ import { ListItemIconStyled } from './List';
 
 const Icofont = loadable(() => import('react-icofont'));
 
-export interface FeatureBoxProps {
+export interface FeatureBoxProps extends React.PropsWithChildren {
   title: string;
   icon: IconProp | string;
   set?: 'fontawesome' | 'icofont';

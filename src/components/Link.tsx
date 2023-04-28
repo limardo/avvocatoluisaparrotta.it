@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMobile } from '../hooks/useMobile';
 
-export interface LinkProp {
+export interface LinkProp extends React.PropsWithChildren {
   hash: string;
   className?: string;
 }

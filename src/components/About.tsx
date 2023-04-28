@@ -66,7 +66,11 @@ const AboutSectionLightStyled = styled.div`
 
       h1 {
         margin: 0;
-        font-size: 4vw;
+        font-size: 2vw;
+
+        @media screen and (width <= 993px) {
+          font-size: 4vw;
+        }
       }
     }
 

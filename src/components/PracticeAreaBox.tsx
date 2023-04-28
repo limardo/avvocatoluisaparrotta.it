@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Icofont = loadable(() => import('react-icofont'));
 
-export interface PracticeAreaBoxProps {
+export interface PracticeAreaBoxProps extends React.PropsWithChildren {
   title: string;
   icon: IconProp | string;
   set?: 'fontawesome' | 'icofont';
