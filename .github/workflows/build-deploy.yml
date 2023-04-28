@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: Production
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
+          node-version: 18
       - name: Use Php 7.4
         uses: shivammathur/setup-php@v2
         with:
@@ -32,7 +32,7 @@ jobs:
           filename: ./scripts/.env
       - name: Cache node modules
         id: node-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
@@ -40,14 +40,14 @@ jobs:
             ${{ runner.os }}-npm-
       - name: Cache composer packages
         id: composer-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor
           key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-php-
       - name: Install NPM dependecies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-progress
       - name: Build
@@ -61,7 +61,7 @@ jobs:
           GOOGLE_RECAPTCHA_SITEKEY: ${{ secrets.GOOGLE_RECAPTCHA_SITEKEY }}
       - name: Cache build
         id: build-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ./public
           key: build-${{ github.sha }}
@@ -72,15 +72,15 @@ jobs:
     environment: Production
     needs: [build]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Restore build
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: build-cache
         with:
           path: ./public
           key: build-${{ github.sha }}
       - name: Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -88,4 +88,5 @@ jobs:
           server-dir: ${{ secrets.FTP_PATH }}
           local-dir: ./public/
           state-name: .ftp-deploy-sync-state.json
-          exclude: '[cgi-bin]'
+          exclude: |
+            '[cgi-bin]'
