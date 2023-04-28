@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.6.0 (2023-04-28)
+
+### Features
+
+- added animation to header and footer ([cd7c1e4](https://github.com/limardo/avvocatoluisaparrotta.it/commit/cd7c1e4a4191da39a76c392c177cdaca56b8ecf7))
+
 ### 1.5.12 (2023-04-28)
 
 ### Bug Fixes
