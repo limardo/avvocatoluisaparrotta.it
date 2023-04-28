@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.6.2 (2023-04-28)
+
+### Bug Fixes
+
+- added eager attribute to image ([cc07809](https://github.com/limardo/avvocatoluisaparrotta.it/commit/cc07809ec5af0467f26a04316384c8a7e5129d71))
+
 ### 1.6.1 (2023-04-28)
 
 ### Bug Fixes
