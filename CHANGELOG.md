@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.5.11 (2023-04-28)
+
+### Bug Fixes
+
+- updated node version on github actions ([f65ca7a](https://github.com/limardo/avvocatoluisaparrotta.it/commit/f65ca7aef57faa2927024dcf891a8c0d247790de))
+
 ### 1.5.10 (2023-04-28)
 
 ### Bug Fixes
