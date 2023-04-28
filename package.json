@@ -19,7 +19,10 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "release": "standard-version",
-    "start:scripts": "php -S localhost:8080 -t ./public"
+    "preperformance": "npm run build",
+    "performance": "start-server-and-test serve http://localhost:9000 test:performance",
+    "start:scripts": "php -S localhost:8080 -t ./public",
+    "test:performance": "node performance.mjs"
   },
   "dependencies": {
     "@fontsource/jost": "^4.5.13",
@@ -70,6 +73,7 @@
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
+    "chrome-launcher": "^0.15.2",
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -82,11 +86,13 @@
     "gatsby-plugin-purgecss": "^6.2.1",
     "gatsby-plugin-typescript": "^5.9.0",
     "husky": "^8.0.3",
+    "lighthouse": "^10.1.1",
     "lint-staged": "^13.2.2",
     "postcss": "^8.4.23",
     "postcss-styled-syntax": "^0.4.0",
     "prettier": "^2.8.8",
     "standard-version": "^9.5.0",
+    "start-server-and-test": "^2.0.0",
     "stylelint": "^15.6.0",
     "stylelint-config-idiomatic-order": "^9.0.0",
     "stylelint-config-standard": "^33.0.0",

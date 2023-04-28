@@ -1,19 +1,12 @@
+import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
 import { useMobile } from '../hooks/useMobile';
-import LogoLightSvg from '../images/logo-light.svg';
-import LogoSvg from '../images/logo.svg';
 
 const LogoStyled = styled.div`
   height: auto;
   color: white;
   transition: all 0.3s;
-
-  img {
-    width: 200px;
-    max-width: 200px;
-    height: auto;
-  }
 
   & .logo {
     display: inline-block;
@@ -21,6 +14,13 @@ const LogoStyled = styled.div`
 
   & .logo-2 {
     display: none;
+  }
+
+  & .logo img,
+  & .logo-2 img {
+    width: 200px;
+    max-width: 200px;
+    height: auto;
   }
 
   &.mobile {
@@ -45,8 +45,8 @@ const Logo: React.FC<any> = () => {
   return (
     <LogoStyled className={logoClassName}>
       <a href="/" aria-label="logo">
-        <img alt="" className="logo" src={LogoLightSvg} width={1200} height={287} />
-        <img alt="" className="logo-2" src={LogoSvg} width={1200} height={287} />
+        <StaticImage src="../images/logo-light.svg" alt="Logo" className="logo" width={1200} height={287} />
+        <StaticImage src="../images/logo.svg" alt="Logo" className="logo-2" width={1200} height={287} />
       </a>
     </LogoStyled>
   );

@@ -4,7 +4,6 @@ import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
 import { AboutData, FrontmatterData } from '../data';
-import Bg9 from '../images/backgrounds/9.webp';
 
 const query = graphql`
   query AboutPageQuery {
@@ -132,8 +131,6 @@ const AboutSectionDarkStyled = styled.div`
     height: 100%;
     padding: 0;
     margin: 0;
-    background: url(${Bg9}) center no-repeat;
-    background-size: cover;
   }
 `;
 
@@ -309,7 +306,17 @@ const About: React.FC<any> = () => {
             </div>
           </div>
         </div>
-        <div className="col-lg-6 image-container" />
+        <div className="col-lg-6 image-container">
+          <div style={{ display: 'grid', height: '100%', width: '100%' }}>
+            <StaticImage
+              style={{ gridArea: '1/1' }}
+              src="../images/backgrounds/9.webp"
+              alt=""
+              layout="fullWidth"
+              aspectRatio={1 / 1}
+            />
+          </div>
+        </div>
       </AboutSectionDarkStyled>
     </section>
   );

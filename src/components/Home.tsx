@@ -1,9 +1,9 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { Background, Parallax } from 'react-parallax';
 import styled from 'styled-components';
 import { FrontmatterData, HomeData } from '../data';
-import Bg5 from '../images/backgrounds/home.webp';
 import Link from './Link';
 
 const query = graphql`
@@ -47,10 +47,19 @@ const HomeSection = styled.section`
 `;
 
 const HomeHeroImage = styled.div`
+  display: grid;
   width: 100%;
   height: 100%;
-  background: url(${Bg5}) top;
-  background-size: cover;
+
+  & > .home-hero-image-item {
+    align-self: inherit;
+    grid-area: 1/1;
+
+    @media screen and (width > 993px) {
+      height: 100%;
+      align-self: start;
+    }
+  }
 `;
 
 const Home: React.FC<any> = () => {
@@ -61,7 +70,18 @@ const Home: React.FC<any> = () => {
     <HomeSection id={slug} aria-label="section" className="vh-100 p-0 text-light">
       <Parallax className="vh-100" strength={200} bgImageStyle={{ color: 'red ' }}>
         <Background className="full">
-          <HomeHeroImage />
+          <HomeHeroImage>
+            <StaticImage
+              imgStyle={{ objectPosition: 'center top' }}
+              className="home-hero-image-item"
+              layout="fullWidth"
+              aspectRatio={800 / 533}
+              transformOptions={{ fit: 'cover' }}
+              alt="Avv. Luisa Parrotta"
+              src={'../images/backgrounds/home.webp'}
+              formats={['auto', 'webp', 'avif']}
+            />
+          </HomeHeroImage>
         </Background>
         <div className="v-center">
           <div className="container">

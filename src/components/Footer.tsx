@@ -3,10 +3,10 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faCheck, faLongArrowAltRight, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { graphql, useStaticQuery } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
 import { useRecaptcha } from '../hooks/useRecaptcha';
-import LogoLightSvg from '../images/logo-light.svg';
 
 const query = graphql`
   query FooterQuery {
@@ -287,7 +287,13 @@ const Footer: React.FC<any> = () => {
           <div className="col-lg-4">
             <FooterWidgetStyled>
               <a href="/" aria-label="logo">
-                <img alt="" className="logo mb-20" src={LogoLightSvg} width={1200} height={287} />
+                <StaticImage
+                  src="../images/logo-light.svg"
+                  alt="Logo"
+                  className="logo mb-20"
+                  width={1200}
+                  height={287}
+                />
               </a>
               <address>
                 {/*

@@ -27,3 +27,7 @@ Thumbs.db
 
 /vendor/
 .env.local
+
+# reports
+report_desktop.html
+report_mobile.html
