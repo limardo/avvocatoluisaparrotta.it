@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.5.10 (2023-04-28)
+
+### Bug Fixes
+
+- regenereted composer.lock ([7309f16](https://github.com/limardo/avvocatoluisaparrotta.it/commit/7309f166aaf80781aeecd6755a6a8efab29e7bbf))
+
 ### 1.5.9 (2023-04-28)
 
 ### 1.5.8 (2022-10-03)
