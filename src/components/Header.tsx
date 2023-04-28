@@ -70,7 +70,7 @@ const HeaderStyled = styled.header`
     box-shadow: 0 4px 6px 0 rgb(10 10 10 / 5%);
   }
 
-  @media (max-width: 991px) {
+  @media (width <= 991px) {
     .header-col {
       justify-content: start;
     }
@@ -134,7 +134,7 @@ const Header: React.FC<any> = () => {
   return (
     <HeaderStyled ref={headerRef} className={headerClassname}>
       <div className="container">
-        <div className="row">
+        <div className="row" data-aos="fade">
           <div className="col-lg-12">
             <div className="row justify-content-between">
               <div className="col-lg-auto header-col header-logo">

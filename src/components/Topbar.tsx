@@ -108,7 +108,7 @@ const Topbar: React.FC<any> = () => {
   return (
     <TopbarStyled className="d-none d-md-block">
       <div className="container">
-        <div className="row">
+        <div className="row" data-aos="fade">
           <div className="topbar-left">
             <span className="topbar-widget tb-social">
               <a href={facebook} target="_blank" rel="noopener" aria-label="facebook">

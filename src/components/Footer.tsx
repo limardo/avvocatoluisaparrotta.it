@@ -282,8 +282,8 @@ const Footer: React.FC<any> = () => {
 
   return (
     <FooterStyled>
-      <div className="container">
-        <div className="row">
+      <div className="container" id="footer-section">
+        <div className="row" data-aos="fade" data-aos-anchor="#footer-section">
           <div className="col-lg-4">
             <FooterWidgetStyled>
               <a href="/" aria-label="logo">
