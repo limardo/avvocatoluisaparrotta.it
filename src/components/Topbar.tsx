@@ -17,7 +17,7 @@ const query = graphql`
     }
     allMdx(
       filter: { frontmatter: { menu: { top: { label: { regex: "/.+/" } } } } }
-      sort: { order: ASC, fields: frontmatter___menu___top___order }
+      sort: { frontmatter: { menu: { top: { order: ASC } } } }
     ) {
       nodes {
         frontmatter {

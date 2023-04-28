@@ -4,7 +4,7 @@
     "stylelint-config-idiomatic-order",
     "stylelint-prettier/recommended"
   ],
-  "customSyntax": "@stylelint/postcss-css-in-js",
+  "customSyntax": "postcss-styled-syntax",
   "plugins": [
     "stylelint-order"
   ],

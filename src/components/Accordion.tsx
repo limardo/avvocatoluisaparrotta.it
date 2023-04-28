@@ -5,12 +5,12 @@ export interface AccordionContextProps {
   accordionKey: string | number;
 }
 
-export interface AccordionItemProps {
+export interface AccordionItemProps extends React.PropsWithChildren {
   title: string;
   itemKey: string | number;
 }
 
-export interface AccordionProps {
+export interface AccordionProps extends React.PropsWithChildren {
   title: string;
   accordionKey: string | number;
 }
