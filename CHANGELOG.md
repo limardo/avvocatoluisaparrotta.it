@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.7.0 (2024-04-12)
+
+### Features
+
+- updated commercial info ([9c45b87](https://github.com/limardo/avvocatoluisaparrotta.it/commit/9c45b872bff6abbcd3d64f0c9984171dded9039f))
+
 ### 1.6.2 (2023-04-28)
 
 ### Bug Fixes
