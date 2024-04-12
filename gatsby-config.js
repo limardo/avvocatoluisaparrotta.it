@@ -3,7 +3,7 @@ const package = require('./package.json');
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://www.avvocatoluisaparrotta.it',
-    title: 'Avvocato Luisa Parrotta - Il tuo migliore avvocato',
+    title: "Avvocato Luisa Parrotta - L'avvocato che stavi cercando",
     description:
       'Avvocato Luisa Parrotta - Studio Legale Luisa Parrotta, è aiutare il cliente in difficoltà, Richiedi una consulenza.',
     phone: '+39 380 189 2602',

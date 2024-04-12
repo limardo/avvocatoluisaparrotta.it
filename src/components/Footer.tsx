@@ -383,6 +383,7 @@ const Footer: React.FC<any> = () => {
         <div className="container">
           <div className="row">
             <div className="col-md py-2 py-md-0">&copy; Copyright 2021 - Avvocato Luisa Parrotta</div>
+            <div className="col-md py-2 py-md-0">P.Iva: 03115210803</div>
             <div className="col-md py-2 py-md-0">
               <div className="text-md-end">
                 <FontAwesomeIconSocialStyled href={facebook} target="_blank" rel="noopener" aria-label="facebook">
