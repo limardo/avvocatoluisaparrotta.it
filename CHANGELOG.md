@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.8.1 (2025-05-27)
+
+### Bug Fixes
+
+- removed DOMContentLoaded event in cookiehub script ([3b407d2](https://github.com/limardo/avvocatoluisaparrotta.it/commit/3b407d2cd305c809fa66f59413479d36713a6cb4))
+
 ## 1.8.0 (2025-05-27)
 
 ### Features
