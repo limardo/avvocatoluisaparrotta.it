@@ -74,13 +74,7 @@ module.exports = {
       resolve: require.resolve(`./cookiehub`),
       options: {
         disableOnDev: true,
-        cookieHubId: process.env.COOKIEHUB_ID || '',
-        categories: [
-          {
-            categoryName: 'analytics',
-            cookieName: 'gdpr-enabled'
-          }
-        ]
+        cookieHubId: process.env.COOKIEHUB_ID || ''
       }
     },
     {

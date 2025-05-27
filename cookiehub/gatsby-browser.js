@@ -1,5 +1,5 @@
 exports.onClientEntry = (_, pluginOptions = {}) => {
-  const { disableOnDev, cookieHubId, categories } = pluginOptions;
+  const { disableOnDev, cookieHubId } = pluginOptions;
 
   if (process.env.NODE_ENV === 'development' && disableOnDev && !cookieHubId) {
     return null;
@@ -29,10 +29,8 @@ exports.onClientEntry = (_, pluginOptions = {}) => {
         wait_for_update: 500
       });
 
-      h.addEventListener('DOMContentLoaded', (event) => {
-        const cpm = {};
-        u.cookiehub.load(cpm);
-      });
+      const cpm = {};
+      u.cookiehub.load(cpm);
     };
 
     d.parentNode.insertBefore(e, d);
