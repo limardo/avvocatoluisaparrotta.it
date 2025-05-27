@@ -5,45 +5,38 @@ exports.onClientEntry = (_, pluginOptions = {}) => {
     return null;
   }
 
-  const cookieNames = (categories || []).reduce((a, c) => {
-    a[c.categoryName] = c.cookieName;
-    return a;
-  }, {});
-
-  const handleCategoryUserInput = (categoryName, allowed) => {
-    let cookieName = cookieNames[categoryName];
-
-    if (cookieName === undefined) {
-      cookieName = `cookiehub-${categoryName}-allowed`;
-    }
-
-    document.cookie = `${cookieName}=${allowed};path=/`;
-  };
-
-  const cpm = {
-    onInitialise: function (status) {
-      status.categories.forEach((cat) => {
-        handleCategoryUserInput(cat.id, cat.value);
-      });
-    },
-    onAllow: function (category) {
-      handleCategoryUserInput(category, true);
-    },
-    onRevoke: function (category) {
-      handleCategoryUserInput(category, false);
-    }
-  };
-
-  const handleLoadCookieHub = (h, u, b) => {
+  const handleLoadCookieHub = (h, u) => {
     const d = h.getElementsByTagName('script')[0];
     const e = h.createElement('script');
 
     e.async = true;
-    e.src = `https://cookiehub.net/c2/${cookieHubId}.js`;
-    e.onload = () => u.cookiehub.load(b);
+    e.src = `https://cdn.cookiehub.eu/c2/${cookieHubId}.js`;
+    e.onload = () => {
+      u.dataLayer = u.dataLayer || [];
+
+      function gtag() {
+        u.dataLayer.push(arguments);
+      }
+
+      gtag('consent', 'default', {
+        security_storage: 'granted',
+        functionality_storage: 'denied',
+        personalization_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500
+      });
+
+      h.addEventListener('DOMContentLoaded', (event) => {
+        const cpm = {};
+        u.cookiehub.load(cpm);
+      });
+    };
 
     d.parentNode.insertBefore(e, d);
   };
 
-  handleLoadCookieHub(document, window, cpm);
+  handleLoadCookieHub(document, window);
 };
